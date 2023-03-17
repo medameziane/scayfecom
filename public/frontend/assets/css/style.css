@@ -663,9 +663,11 @@ img{
   color: #fff;
 }
 .featured-categories .featured-header-category {
-  padding: 11px 5px;
-  cursor: pointer;
-  transition: .3s ease-in-out;
+    padding: 11px 5px;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+    font-size: 18px;
+    font-weight: 600;
 }
 .featured-categories .featured-header-category.active,
 .featured-header-category:hover {
