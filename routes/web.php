@@ -36,6 +36,6 @@ Route::get('/cart',CartComponent::class)->name("cart");
 Route::get('/checkout',CheckoutComponent::class)->name("checkout");
 
 // Redirect to homepage if the page target does not exist
-Route::any('{query}',function() { return redirect('/'); })->where('query', '.*');
+// Route::any('{query}',function() { return redirect('/'); })->where('query', '.*');
 
 require __DIR__.'/auth.php';

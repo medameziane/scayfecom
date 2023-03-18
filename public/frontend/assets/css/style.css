@@ -60,7 +60,7 @@ body{
   width: 100%;
   overflow:hidden;
 }
-.main-header .wrrapper {
+header .wrrapper {
   overflow:unset;
 }
 .flexing{
