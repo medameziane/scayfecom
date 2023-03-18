@@ -78,19 +78,23 @@ plus.forEach((pl)=>{
 /*--------- Start Featured categories ---------*/
 let f_categories = document.querySelectorAll(".featured-header-categories .featured-header-category")
 let f_items = document.querySelectorAll(".featured-categories .featured-items")
-f_categories[0].classList.add("active")
-f_categories.forEach(f_cat=>{
-  f_cat.onclick = (e)=>{
-    f_categories.forEach(f_cat_act=>{
-      f_cat_act.classList.remove('active')
-    })
-    f_items.forEach(f_cat_item=>{
-      f_cat_item.style.display ='none'
-    })
-    e.currentTarget.classList.add("active")
-    document.getElementById(e.currentTarget.dataset["cat"]).style.display ='block'
+if(f_categories){
+  if(f_categories[0]){
+    f_categories[0].classList.add("active")
   }
-})
+  f_categories.forEach(f_cat=>{
+    f_cat.onclick = (e)=>{
+      f_categories.forEach(f_cat_act=>{
+        f_cat_act.classList.remove('active')
+      })
+      f_items.forEach(f_cat_item=>{
+        f_cat_item.style.display ='none'
+      })
+      e.currentTarget.classList.add("active")
+      document.getElementById(e.currentTarget.dataset["cat"]).style.display ='block'
+    }
+  })
+}
 
 
 
