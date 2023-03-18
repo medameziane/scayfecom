@@ -60,6 +60,9 @@ body{
   width: 100%;
   overflow:hidden;
 }
+.main-header .wrrapper {
+  overflow:unset;
+}
 .flexing{
   display: flex;
   align-items: center;
