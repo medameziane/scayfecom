@@ -19,6 +19,21 @@ window.addEventListener("scroll",function(){
     document.querySelector(".main-header").classList.remove("sticky")
   }
 })
+let categories_icon = document.querySelector(".categories-icon")
+let menus_icon = document.querySelector(".menus-icon")
+if(categories_icon && menus_icon){
+  categories_icon.onclick = ()=>{
+    document.querySelector(".categories-menu").classList.toggle("mobile-menu")
+    document.querySelector(".list-menus").classList.remove("mobile-menu")
+  }
+  
+  menus_icon.onclick = ()=>{
+    document.querySelector(".list-menus").classList.toggle("mobile-menu")
+    document.querySelector(".categories-menu").classList.remove("mobile-menu")
+  }
+}
+
+
 
 /*--------- Start Calc Quantity ---------*/
 let calctotal = 0

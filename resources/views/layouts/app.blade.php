@@ -5,7 +5,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>@yield('title')</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="icon" href="https://themeforest.img.customer.envatousercontent.com/files/437908685/ebbe_screenshots/01_Main_Preview.jpg?auto=compress%2Cformat&fit=crop&crop=top&w=590&h=300&s=b8898dd4107b0016a7c0c8b3b237739f">
+    <link rel="icon" href="{{asset('images/icons/favicon.png')}}">
     <link rel="stylesheet" href="{{asset('frontend/assets/css/bootstrap.min.css')}}">
     <link rel='stylesheet' type='text/css' href='{{asset('frontend/assets/css/style.css')}}'>
     <!-- <link rel="stylesheet" href="assets/css/fontowsome.min.css"> -->
@@ -58,9 +58,9 @@
         <div class="middle-header">
           <div class="wrrapper">
             <div class="middle-header-content flexing">
-              <div class="logo-area">
-                <img src="https://allomarche.ma/wp-content/uploads/2021/08/logo3.png">
-              </div>
+              <a href="/" class="logo-area">
+                <img src="{{asset('images/icons/logo.png')}}">
+              </a>
               <div class="search-area">
                 <input type="text" class="header-search" placeholder="search here..."/>
                 <i class="fa-solid fa-magnifying-glass search-icon"></i>
@@ -81,10 +81,12 @@
         <div class="main-header">
           <div class="wrrapper">
             <div class="main-menus flex-start">
-              <div class="header-categories flexing">
-                <span class="menu-icon"><i class="fa-solid fa-bars"></i></span>
-                <p class="categories-title">All Categories</p>
-                <span class="down-icon"><i class="fa-solid fa-chevron-down"></i></span>
+              <span class="categories-icon"><i class="fa-solid fa-bars"></i></span>
+              <div class="header-categories">
+                <div class="categories-title">
+                  <span class="cat-title">All Categories</span> 
+                  <span class="down-icon"><i class="fa-solid fa-chevron-down"></i></span>
+                </div>
                 <div class="categories-menu">
                   @foreach ( $categories as $category )
                     <div class="category-item">
@@ -102,11 +104,14 @@
                   @endforeach
                 </div>
               </div>
-              <ul class="list-menus flexing">
-                <li class="menu"><a href="/">Home</a></li>
-                <li class="menu"><a href="{{route('cart')}}">Cart</a></li>
-                <li class="menu"><a href="{{route('checkout')}}">Checkout</a></li>
-              </ul>
+              <div class="menus">
+                <span class="menus-icon"><i class="fa-solid fa-bars"></i></span>
+                <ul class="list-menus">
+                  <li class="menu"><a href="/">Home</a></li>
+                  <li class="menu"><a href="{{route('cart')}}">Cart</a></li>
+                  <li class="menu"><a href="{{route('checkout')}}">Checkout</a></li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>

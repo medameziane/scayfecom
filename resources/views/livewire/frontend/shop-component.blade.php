@@ -1,8 +1,8 @@
 <!-- Start Shop details -->
 <section class="shop-section">
     <div class="wrrapper">
-    <main class="main-content">
-        <div class="main-details">
+    <main class="main-content row">
+        <div class="main-details col-md-8">
             <div class="shop-products">
                 <div class="shop-items flexing">
                 <div class="shop-title">We found <span class="shop-count">{{count($singlesubcategory[0]->products)}}</span> Items</div>
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <aside class="sidebar">
+        <aside class="sidebar col-md-4">
             <div class="sidebar-content">
                 <div class="sidebar-item">
                 <div class="sidebar-title">Filter Search</div>
