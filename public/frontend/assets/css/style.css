@@ -1028,6 +1028,11 @@ img{
 .checkout-section .payment-methods .form-section {
   margin: 15px 0;
 }
+.checkout-section .form-section .paypal{
+  width: 200px;
+  margin: 0 10px;
+  cursor: pointer;
+}
 .checkout-section .payment-methods .form-section .checkout-method-info{
   padding: 10px;
   margin: 10px 0;
@@ -1035,12 +1040,6 @@ img{
 }
 .dblock{
   display: block !important;
-}
-.checkout-section .payment-methods .form-section .checkout-method-info img {
-  width: 250px;
-  height: 30px;
-  margin: auto;
-  display: block;
 }
 .checkout-section .checkout-title{
   font-size: 22px;

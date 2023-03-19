@@ -113,8 +113,6 @@ if(f_categories){
 
 
 
-
-
 /*--------- Start Product details ---------*/
 let qte_minus = document.querySelector(".product-details .cart-quantity #minus")
 let qte_plus  = document.querySelector(".product-details .cart-quantity #plus")
@@ -133,7 +131,6 @@ if(qte_minus && qte_plus){
 
 /*--------- Start checkout ---------*/
 let checkoutform = document.getElementById("checkout-form")
-let paypal = document.getElementById("paypal")
 let cod = document.getElementById("cod")
 if(checkoutform){
   checkoutform.onsubmit = (e)=>{
@@ -157,7 +154,7 @@ if(checkoutform){
     })
   
     // Payment methods validation
-    if(payment_method[0].checked || payment_method[1].checked){
+    if(payment_method[0].checked || payment_method[1].checked || payment_method[2].checked){
       document.querySelector(".payment-error").innerHTML = ''
     }else{
       document.querySelector(".payment-error").style.color ="red"
@@ -172,14 +169,9 @@ if(checkoutform){
     }
   }
 }
-if(paypal && cod){
-  paypal.onclick = ()=>{
-    document.querySelector(".paypal").classList.add("dblock")
-    document.querySelector(".cod").classList.remove("dblock")
-  }
+if(cod){
   cod.onclick = ()=>{
     document.querySelector(".cod").classList.add("dblock")
-    document.querySelector(".paypal").classList.remove("dblock")
   }
 }
 

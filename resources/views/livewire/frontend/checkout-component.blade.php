@@ -54,18 +54,18 @@
                     <p class="checkout-title">Payment methods</p>
                     <p class="payment-error"></p>
 
-                    <!-- <div class="form-section">
-                        <input type="radio" name="payment-method" id="card-payment">
-                        <label for="card-payment" class="f-label">Card Payment</label>
-                        <div class="checkout-method-info">Pay with cash upon delivery.</div>
-                    </div> -->
+                    <div class="form-section">
+                        <input type="radio" name="payment-method" id="cards-payment">
+                        <label for="cards-payment" class="f-label">
+                            <img src="{{asset('frontend/assets/imgs/icons/cards-payment.png')}}" class="paypal">
+                        </label>
+                    </div>
 
                     <div class="form-section">
                         <input type="radio" value="paypal" name="payment-method" id="paypal">
-                        <label for="paypal" class="f-label">Paypal</label>
-                        <div class="checkout-method-info paypal">
-                        <a href="#"><img src="{{asset('frontend/assets/imgs/icons/paypal.png')}}"></a>
-                        </div>
+                        <label for="paypal" class="f-label">
+                            <img src="{{asset('frontend/assets/imgs/icons/paypal.png')}}" class="paypal">
+                        </label>
                     </div>
 
                     <div class="form-section">
