@@ -366,78 +366,6 @@ img{
   color: var(--title-color);
   transition: .3s;
 }
-@media (max-width: 667px){
-  .header .categories-icon{
-    display: block;
-    font-size: 25px;
-    cursor: pointer;
-  }
-  .header-categories .categories-title {
-    display: none;
-  }
-  .header-categories {
-    position: unset;
-    background-color: unset;
-  }
-  .main-header .categories-menu {
-    transform: translateX(-200%);
-    visibility: visible;
-    opacity: 1;
-    max-height: 60vh;
-    min-height: fit-content;
-    overflow-y: auto;
-  }
-  .main-header .categories-menu.mobile-menu{
-    transform: translateX(0);
-    transition: transform .3s;
-  }
-  .section-header .section-title{
-    font-size: 22px;
-  }
-}
-@media (max-width: 567px){
-  .main-header .menus .menus-icon {
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 25px;
-  }
-  .main-header .list-menus {
-    flex-direction: column;
-    position: absolute;
-    right: 0;
-    top: 100%;
-    background: var(--card-color);
-    width: 100%;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    transform: translateX(200%);
-    transition: .3s;
-    visibility: hidden;
-    opacity: 0;
-  }
-  .main-header .list-menus.mobile-menu{
-    transform: translateX(0);
-    visibility: visible;
-    opacity: 1;
-    max-height: 60vh;
-    min-height: fit-content;
-    overflow-y: auto;
-  }
-  .main-header .list-menus a {
-    color: var(--title-color);
-    padding: 0px 10px;
-    width: 100%;
-    display: block;
-    border-bottom: 1px solid var(--border-color);
-  }
-  .section-header .section-title{
-    font-size: 20px;
-  }
-}
-
 
 /* Start edit services */
 .our-services {
@@ -620,17 +548,14 @@ img{
 .daily-selles .d-selle {
   background: var(--card-color);
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   border: 1px solid var(--border-color);
   padding: 20px 15px;
   flex: 1;
   border-radius: 10px;
 }
-@media (max-width:991px) {
-  .daily-selles .d-selle {
-    flex-basis: 100%;
-  }
-}
+
 .daily-selles .d-selle:hover{
   border-color: var(--main-color);
   transition: .3s;
@@ -1195,4 +1120,90 @@ img{
 .cart-hidden .cart-hidden-image img {
   width: 40px;
   height: 40px;
+}
+
+@media (max-width:991px) {
+  .daily-selles .d-selle {
+    flex-basis: 100%;
+  }
+  .middle-header-content{
+    justify-content: center;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 667px){
+  .header .categories-icon{
+    display: block;
+    font-size: 25px;
+    cursor: pointer;
+  }
+  .header-categories .categories-title {
+    display: none;
+  }
+  .header-categories {
+    position: unset;
+    background-color: unset;
+  }
+  .main-header .categories-menu {
+    transform: translateX(-200%);
+    visibility: visible;
+    opacity: 1;
+    max-height: 60vh;
+    min-height: fit-content;
+    overflow-y: auto;
+  }
+  .main-header .categories-menu.mobile-menu{
+    transform: translateX(0);
+    transition: transform .3s;
+  }
+  .section-header .section-title{
+    font-size: 22px;
+  }
+  .daily-selles .d-selle img{
+    width: 100%;
+  }
+}
+
+@media (max-width: 567px){
+  .main-header .menus .menus-icon {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 25px;
+  }
+  .main-header .list-menus {
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: var(--card-color);
+    width: 100%;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    transform: translateX(200%);
+    transition: .3s;
+    visibility: hidden;
+    opacity: 0;
+  }
+  .main-header .list-menus.mobile-menu{
+    transform: translateX(0);
+    visibility: visible;
+    opacity: 1;
+    max-height: 60vh;
+    min-height: fit-content;
+    overflow-y: auto;
+  }
+  .main-header .list-menus a {
+    color: var(--title-color);
+    padding: 0px 10px;
+    width: 100%;
+    display: block;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .section-header .section-title{
+    font-size: 20px;
+  }
 }
