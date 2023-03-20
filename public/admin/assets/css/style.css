@@ -483,6 +483,7 @@ ul{
 }
 .header-content .title-content {
   font-size: 25px;
+  margin: 0;
   font-weight: 600;
   color: var(--title-color);
   text-transform:uppercase;
@@ -682,6 +683,7 @@ ul{
 }
 .form-content .form-details .input-section {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   background: var(--bg-color);
   width: fit-content;
@@ -707,7 +709,8 @@ ul{
   cursor: pointer;
 }
 .form-content .form-details .group-input {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(400px,1fr));
   gap: 10px;
 }
 .input-box input,.input-box textarea{
@@ -715,7 +718,7 @@ ul{
   width: 100%;
   max-width: 100%;
   outline: none;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 5px;
   padding:0 15px;
   border: 1px solid #222f3e66;
@@ -933,4 +936,53 @@ tbody.table-body .body-child-content img{
 .pagination .page-item {
   padding: 0 !important;
   border-bottom: none !important;
+}
+
+
+/* Start media */
+@media (max-width:767px) {
+  :root{
+    --content-width : 100%;
+    /* --sidebar-width : 0px; */
+  }
+  .sidebar,.sidebar .logo-area{
+    top : 60px;
+  }
+  .sidebar{
+    top : 60px;
+    margin-left: -250px;
+  }
+  .sidebar.show{
+    margin-left: 0px;
+  }
+  .header-content .title-content{
+    font-size: 20px;
+  }
+  .form-content .form-details {
+    grid-template-columns: repeat(auto-fill,minmax(400px,1fr));
+  }
+}
+
+@media (max-width:467px) {
+  .sidebar, .sidebar .logo-area{
+    width: 100%;
+  }
+  .sidebar{
+    margin-left: -100%;
+  }
+  .settings-area,.settings-area .settings-header{
+    width: 100%;
+  }
+  .settings-area{
+    right: -100%;
+  }
+  .header-content .title-content {
+    font-size: 16px;
+  }
+  .form-content .form-details,.form-content .form-details .group-input{
+    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+  }
+  .form-content .form-details .input-image{
+    width: 100%;
+  }
 }

@@ -8,6 +8,12 @@ use App\Http\Livewire\Admin\Product\ProductComponent;
 use App\Http\Livewire\Admin\Product\AddProductComponent;
 use App\Http\Livewire\Admin\Product\EditProductComponent;
 use App\Http\Livewire\Admin\Product\ShowProductComponent;
+use App\Http\Livewire\Admin\Category\CategoryComponent;
+use App\Http\Livewire\Admin\Category\AddCategoryComponent;
+use App\Http\Livewire\Admin\Category\EditCategoryComponent;
+use App\Http\Livewire\Admin\SubCategory\SubCategoryComponent;
+use App\Http\Livewire\Admin\SubCategory\AddSubCategoryComponent;
+use App\Http\Livewire\Admin\SubCategory\EditSubCategoryComponent;
 
 
 // Front-End Livewires
@@ -25,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name("dashboard");
+    
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -33,6 +40,16 @@ Route::middleware('auth')->group(function () {
     Route::get("products/add",AddProductComponent::class)->name("products.add");
     Route::get("products/edit/{product_id}",EditProductComponent::class)->name("products.edit");
     Route::get("products/show/{product_id}",ShowProductComponent::class)->name("products.show");
+
+    Route::get("categories",CategoryComponent::class)->name("categories");
+    Route::get("categories/{category_id}",[CategoryComponent::class,"Destroy"])->name("category.delete");
+    Route::get("category/add",AddCategoryComponent::class)->name("category.add");
+    Route::get("category/edit/{category_id}",EditCategoryComponent::class)->name("category.edit");
+    
+    Route::get("subcategories",SubCategoryComponent::class)->name("subcategories");
+    Route::get("subcategories/{subcategory_id}",[SubCategoryComponent::class,"Destroy"])->name("subcategory.delete");
+    Route::get("subcategory/add",AddSubCategoryComponent::class)->name("subcategory.add");
+    Route::get("subcategory/edit/{subcategory_id}",EditSubCategoryComponent::class)->name("subcategory.edit");
 
 });
 

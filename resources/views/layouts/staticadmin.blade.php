@@ -5,6 +5,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>@yield("title")</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="icon" href="{{asset('images/icons/favicon.png')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel='stylesheet' type='text/css' href='{{asset("admin/assets/css/style.css")}}'>
@@ -13,7 +14,7 @@
   <body>
     <div class="overly"></div>
     <div class="sidebar">
-      <div class="logo-area"><i class="fa-solid fa-g"></i> <h1>_mao</h1></div>
+      <div class="logo-area"><h1>ScayfEcom</h1></div>
       <div class="sidebar-header">
       </div>
       <div class="menu-area">
@@ -29,8 +30,8 @@
             <ul class="drop-menu">
               <li class="drop-link"><a href="{{route('products')}}">List Products</a></li>
               <li class="drop-link"><a href="{{route('products.add')}}">Add Product</a></li>
-              {{-- <li class="drop-link"><a href="{{route('categories')}}">Categories</a></li> --}}
-              {{-- <li class="drop-link"><a href="{{route('subcategories')}}">Sub Categories</a></li> --}}
+              <li class="drop-link"><a href="{{route('categories')}}">Categories</a></li>
+              <li class="drop-link"><a href="{{route('subcategories')}}">Sub Categories</a></li>
             </ul>
           </li>
           <li class="nav-link drop-down">

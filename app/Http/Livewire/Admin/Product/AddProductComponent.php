@@ -9,8 +9,7 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 
-class AddProductComponent extends Component
-{
+class AddProductComponent extends Component{
     use WithFileUploads;
     public $name;
     public $slug;
@@ -20,6 +19,8 @@ class AddProductComponent extends Component
     public $image;
     public $sub_category_id;
 
+    public $category_id;
+    public $subcategories = [];
 
     public function generateSlug(){
         $this->slug = Str::slug($this->name);
@@ -27,7 +28,7 @@ class AddProductComponent extends Component
 
     public function addProduct(){
         $this->validate([
-            "name"              =>  "required",
+            "name"              =>  "required | max:70",
             "slug"              =>  "required",
             "description"       =>  ['required','min:10'],
             "price"             =>  "required | integer ",
@@ -37,7 +38,7 @@ class AddProductComponent extends Component
         ]);
 
         // Change image name
-        $imageName                  =  time().'.'.$this->image->extension();
+        $imageName  =  time().'.'.$this->image->extension();
         
         // Insert data
         $product                    =  new Product();
@@ -51,14 +52,19 @@ class AddProductComponent extends Component
         $product->save();
 
         // Move image to target location (product)
-        $this->image->storeAs("images/products",$imageName);
+        $this->image->storeAs("products",$imageName);
         return redirect()->route('products')->with("success",'New product has been added successfully');
     }
 
     public function render(){
-        $subcategories  = SubCategory::all();
+        if(!empty($this->category_id)){
+            $this->subcategories  = SubCategory::where("category_id",$this->category_id)->get();
+        }
+
         $categories     = Category::all();
-        $data = compact("subcategories","categories");
+        $subcategories  = ["subcategories" => $this->subcategories];
+        $data = compact("categories","subcategories");
+        
         return view('livewire.admin.product.add-product-component',$data)
                 ->layout("layouts.staticadmin");;
     }

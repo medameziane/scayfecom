@@ -42,20 +42,18 @@ let handleTheme = (theme)=>{
 }
 
 // Preview image form
-window.addEventListener("load",()=>{
-  let myImage = document.getElementById('image')
-  let beforeImage = document.getElementById('preview-image-before-upload')
-  if(myImage){
-    myImage.addEventListener("change",function(){  
-      let reader = new FileReader();
-      reader.addEventListener("load",(e)=>{ 
-        beforeImage.setAttribute('src', e.target.result);}
-      )
-      reader.readAsDataURL(this.files[0]); 
-     }
+let myImage = document.getElementById('image')
+let beforeImage = document.getElementById('preview-image-before-upload')
+if(myImage || beforeImage){
+  myImage.addEventListener("change",function(){  
+    let reader = new FileReader();
+    reader.addEventListener("load",(e)=>{ 
+      beforeImage.setAttribute('src', e.target.result);}
     )
-  }
-})
+    reader.readAsDataURL(this.files[0]); 
+   }
+  )
+}
 
 // handle event messages
 window.setInterval(()=>{
@@ -63,7 +61,6 @@ window.setInterval(()=>{
     document.querySelector(".handle-event").style.display = "none"
   }
 },5000)
-
 
 
 // Check local storage of Theme
@@ -82,7 +79,8 @@ if(localStorage.getItem('listColor')){
 
 // List Colors
 let listColors = document.querySelectorAll(".colors li.color")
-listColors.forEach(col=>{
+if(listColors){
+  listColors.forEach(col=>{
     col.addEventListener('click',(e)=>{
       document.documentElement.style.setProperty("--main-color",e.target.dataset.color)
       listColors.forEach(col1=>{
@@ -92,6 +90,7 @@ listColors.forEach(col=>{
     localStorage.setItem('listColor',e.target.dataset.color)
   })
 })
+}
 
 // Start Sidebar
 document.querySelectorAll(".drop-down").forEach(drop=>{
@@ -104,6 +103,31 @@ document.querySelectorAll(".drop-down").forEach(drop=>{
 
 // Progress Area 
 let spans = document.querySelectorAll('.progress-section .progress-size')
-spans.forEach(span=>{
-  span.style.width = span.dataset.width
-})
+if(spans){
+  spans.forEach(span=>{
+    span.style.width = span.dataset.width
+  })
+}
+
+// Start add product page
+let form_details = document.querySelectorAll(".form-details input");
+if(form_details){
+  form_details.forEach(input=>{
+    input.onclick =(e)=>{
+      let placeholder = e.target.placeholder;
+      e.target.placeholder =""
+      input.onblur = (e)=>{
+        e.target.placeholder = placeholder
+      }
+    }
+
+  })
+}
+
+let select_category = document.querySelector(".select_category");
+if(select_category){
+  document.getElementById("sub_category").style.display= "none"
+  select_category.onchange =()=>{
+    document.getElementById("sub_category").style.display= "block"
+  }
+}

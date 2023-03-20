@@ -18,14 +18,23 @@
                 {{-- Product name --}}
                 <div class="input-box">
                   <label for="name" class="details">Product Name</label>
-                  <input type="text" id="name" name="name" placeholder="Enter Product Name" wire:model ="name" wire:keyup="generateSlug"/>
+                  <input type="text" 
+                          id="name" 
+                          name="name" 
+                          placeholder="Enter Product Name" 
+                          wire:model ="name" 
+                          wire:keyup="generateSlug" autofocus />
                   @error('name')<p class="input-error">{{$message}}</p>@enderror
                 </div>
 
                 {{-- Product Description --}}
                 <div class="input-box">
                   <label for="description" class="details">Description</label>
-                  <textarea id="description" name="description" placeholder="Enter Product Description" wire:model ="description"></textarea>
+                  <textarea id="description" 
+                            name="description" 
+                            placeholder="Enter Product Description" 
+                            wire:model ="description">
+                  </textarea>
                   @error('description')<p class="input-error">{{$message}}</p>@enderror
                 </div>
 
@@ -34,22 +43,48 @@
                   {{-- Product Price --}}
                   <div class="input-box">
                     <label for="price" class="details">Price</label>
-                    <input type="number" id="price" name="price" placeholder="Enter Product Price" wire:model ="price"/>
+                    <input type="number" 
+                          id="price" 
+                          name="price" 
+                          min="1" 
+                          placeholder="Enter Product Price" 
+                          wire:model ="price"/>
                     @error('price')<p class="input-error">{{$message}}</p>@enderror
                   </div>
 
                   {{-- Product Quantity --}}
                   <div class="input-box">
                     <label for="quantity" class="details">Quantity</label>
-                    <input type="number" id="quantity" placeholder="Enter Quantity" name="quantity" wire:model ="quantity"/>
+                    <input type="number" 
+                            id="quantity" 
+                            placeholder="Enter Quantity" 
+                            min="1" 
+                            name="quantity" 
+                            wire:model ="quantity"/>
                     @error('quantity')<p class="input-error">{{$message}}</p>@enderror
                   </div>
+
+                </div>
+                
+                <div class="group-input">
 
                   {{-- Product Category --}}
                   <div class="input-box">
                     <label class="details">Select Categoty</label>
-                    <select name="sub_category_id" wire:model ="sub_category_id">
+                    <select name="category_id" wire:model="category_id" class="select_category">
                       <option value="" selected>Categories</option>
+                        @foreach($categories as $category)
+                          <option value="{{$category->id}}">{{$category->category}}</option>
+                        @endforeach
+                    </select>
+                    @error('category_id')<p class="input-error">{{$message}}</p>@enderror
+                  </div>
+
+                  {{-- Product SubCategory --}}
+                  <div class="input-box" id="sub_category">
+                    <label class="details">Select Sub Categoty</label>
+                    <select name="sub_category_id" wire:model ="sub_category_id">
+                      <option value="" selected>Sub Categories</option>
                         @foreach($subcategories as $subcategory)
                           <option value="{{$subcategory->id}}">{{$subcategory->subcategory}}</option>
                         @endforeach
@@ -69,7 +104,7 @@
                     </label>
                   </div>
                   <div class="preview-image input-image">
-                    <img id="preview-image-before-upload" src="https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg" alt="preview image" style="max-height: 250px;">
+                    <img id="preview-image-before-upload" src="{{asset('admin/assets/images/no-preview.jpg')}}" style="max-height: 250px;">
                   </div>
                 </div>
                 @error('image')<p class="input-error">{{$message}}</p>@enderror   
