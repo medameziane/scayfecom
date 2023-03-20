@@ -2,6 +2,15 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
+// Admin Livewires
+use App\Http\Livewire\Admin\Product\ProductComponent;
+use App\Http\Livewire\Admin\Product\AddProductComponent;
+use App\Http\Livewire\Admin\Product\EditProductComponent;
+use App\Http\Livewire\Admin\Product\ShowProductComponent;
+
+
+// Front-End Livewires
 use App\Http\Livewire\Frontend\HomeComponent;
 use App\Http\Livewire\Frontend\ProductDetailsComponent;
 use App\Http\Livewire\Frontend\CartComponent;
@@ -10,19 +19,23 @@ use App\Http\Livewire\Frontend\SingleCategoryComponent;
 use App\Http\Livewire\Frontend\ShopComponent;
 
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+// Admin Routes
 
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name("dashboard");
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get("products",ProductComponent::class)->name("products");
+    Route::get("products/add",AddProductComponent::class)->name("products.add");
+    Route::get("products/edit/{product_id}",EditProductComponent::class)->name("products.edit");
+    Route::get("products/show/{product_id}",ShowProductComponent::class)->name("products.show");
+
 });
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->name("dashboard");
 
 Route::get('/form', function () {
     return view('admin.form');

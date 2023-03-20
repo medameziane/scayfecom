@@ -108,8 +108,6 @@
                 <span class="menus-icon"><i class="fa-solid fa-bars"></i></span>
                 <ul class="list-menus">
                   <li class="menu"><a href="/">Home</a></li>
-                  <li class="menu"><a href="{{route('cart')}}">Cart</a></li>
-                  <li class="menu"><a href="{{route('checkout')}}">Checkout</a></li>
                 </ul>
               </div>
             </div>
@@ -123,7 +121,7 @@
         <div class="cart-hidden-close" id="close-cart"><i class="fa-solid fa-xmark"></i></div>
         <div class="cart-hidden-title">Shopping cart</div>
       </div>
-      <a href="/cart.html" class="btn-action my-3">View Cart</a>
+      <a href="{{route('cart')}}" class="btn-action my-3">View Cart</a>
       <div class="carts-hidden-items">
         <div class="cart-hidden-item flex-start">
           <a href="#" class="cart-hidden-image">
@@ -142,6 +140,54 @@
 
     <!-- Start footer -->
     <footer class="footer">
+      <div class="wrrapper">
+        <div class="footer-container">
+          <div class="footer-section">
+            <a href="/" class="logo-area"><img src="{{asset('images/icons/logo.png')}}"></a>
+            <p class="logo-area-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati accusamus error quam pariatur amet fuga enim labore quae recusandae tempore.</p>
+            <div class="footer-social-media">
+              <h2 class="footer-title">Subscribe us</h2>
+              <div class="social-media">
+                <a href="#"><i class="fa-brands fa-facebook facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-pinterest pinterest"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h2 class="footer-title">Links</h2>
+            <div class="footer-items">
+              <a href="#" class="footer-item">Home</a>
+              <a href="#" class="footer-item">Contact</a>
+              <a href="#" class="footer-item">About</a>
+              <a href="#" class="footer-item">Blog</a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h2 class="footer-title">Links</h2>
+            <div class="footer-items">
+              <a href="#" class="footer-item">Home</a>
+              <a href="#" class="footer-item">Contact</a>
+              <a href="#" class="footer-item">About</a>
+              <a href="#" class="footer-item">Blog</a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h2 class="footer-title">Links</h2>
+            <div class="footer-items">
+              <a href="#" class="footer-item">Home</a>
+              <a href="#" class="footer-item">Contact</a>
+              <a href="#" class="footer-item">About</a>
+              <a href="#" class="footer-item">Blog</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="credit text-center">All rights &copy reserved by Mohammed Ameziane &#9829; <span class="credit-date"></span></p>
+      </div>
     </footer>
     
     @livewireScripts

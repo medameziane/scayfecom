@@ -197,3 +197,11 @@ if(shoppriceto && shoppricefrom){
     document.querySelector(".price-from").innerHTML = shoppricefrom.value + "$"
   }
 }
+
+/*--------- Start Footer  ---------*/
+// Get Currant date
+let myDate = new Date()
+let credit_date = document.querySelector(".credit-date")
+if(credit_date){
+  credit_date.innerHTML = myDate.getFullYear()
+}
