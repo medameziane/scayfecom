@@ -122,19 +122,19 @@
                 <h4 class="header-title mb-3">Order Summary</h4>
                 <div class="table-responsive">
                     <table class="table mb-3">
-                    <tbody>
-                        <tr>
-                        <td>Shipping :</td>
-                        <td>Free Shipping</td>
-                        </tr>
-                        <tr>
-                        <td>Total :</td>
-                        <td><input type="text" id="total" class="cart-price" disabled/></td>
-                        </tr>
-                    </tbody>
+                        <tbody>
+                            <tr>
+                                <td>Shipping :</td>
+                                <td>Free Shipping</td>
+                            </tr>
+                            <tr>
+                                <td>Total :</td>
+                                <td><input type="text" id="total" class="cart-price" disabled/></td>
+                            </tr>
+                        </tbody>
                     </table>
                     <div class="text-sm-start">
-                    <a href="{{route('checkout')}}" class="btn btn-primary w-100">Proceed To Checkout</a>
+                        <a href="{{route('checkout')}}" class="btn btn-primary w-100">Proceed To Checkout</a>
                     </div>
                 </div>
                 </div>

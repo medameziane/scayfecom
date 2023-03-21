@@ -23,7 +23,7 @@
                           name="name" 
                           placeholder="Enter Product Name" 
                           wire:model ="name" 
-                          wire:keyup="generateSlug" autofocus />
+                          wire:keyup="generateSlug" autofocus/>
                   @error('name')<p class="input-error">{{$message}}</p>@enderror
                 </div>
 

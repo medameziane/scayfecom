@@ -177,13 +177,23 @@ if(cod){
 
 /*--------- Start Hidden Cart ---------*/
 let closeCart = document.getElementById("close-cart")
-if(closeCart){
+let countercart = document.getElementById("countercart")
+if(closeCart || cart){
   document.getElementById("shopping-cart").onclick = ()=>{
     document.querySelector(".cart-hidden").classList.add("active")
   }
   closeCart.onclick = ()=>{
     document.querySelector(".cart-hidden").classList.remove("active")
   }
+}
+function addcart(){
+  let cartcount = countercart.innerHTML
+  cartcount++;
+  countercart.innerHTML = cartcount;
+  document.querySelector(".product-overly").classList.add("show")
+  window.setTimeout(()=>{
+    document.querySelector(".product-overly").classList.remove("show")
+  },2000)
 }
 
 /*--------- Start Shop page  ---------*/

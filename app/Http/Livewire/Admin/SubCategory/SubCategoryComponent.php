@@ -16,6 +16,7 @@ class SubCategoryComponent extends Component
     public function render()
     {
         $subcategories = SubCategory::orderBy("created_at","desc")->paginate(10);
-        return view('livewire.admin.sub-category.sub-category-component',["subcategories"=>$subcategories])->layout("layouts.staticadmin");;
+        return view('livewire.admin.sub-category.sub-category-component',compact("subcategories"))
+                ->layout("layouts.staticadmin");;
     }
 }

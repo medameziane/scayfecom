@@ -14,7 +14,6 @@ class AddCategoryComponent extends Component
     public $slug;
     public $image;
 
-
     public function generateSlug(){
         $this->slug = Str::slug($this->category);
     }

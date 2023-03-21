@@ -7,6 +7,9 @@ use App\Models\Category;
 
 class CategoryComponent extends Component
 {
+    public function Destroy($category_id){
+        
+    }
     public function render()
     {
         $categories = Category::orderBy("created_at","desc")->paginate(10);
