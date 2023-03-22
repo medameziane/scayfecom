@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2023 at 06:34 PM
+-- Generation Time: Mar 22, 2023 at 06:19 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -87,7 +87,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2014_10_12_100000_create_password_resets_table', 3),
 (7, '2023_03_15_023005_create_categories_table', 3),
 (8, '2023_03_15_023006_create_sub_categories_table', 3),
-(9, '2023_03_15_023007_create_products_table', 3);
+(9, '2023_03_15_023007_create_products_table', 3),
+(11, '2023_03_21_002738_create_shoppings_table', 4);
 
 -- --------------------------------------------------------
 
@@ -201,18 +202,13 @@ INSERT INTO `products` (`id`, `name`, `slug`, `description`, `price`, `quantity`
 (45, 'sit doloremque accusantium deleniti id nobis', 'sit-doloremque-accusantium-deleniti-id-nobis', 'Eaque sed aliquid magnam placeat cumque consequatur. Dolorum aperiam esse quam vero error et ipsum. Nesciunt magni harum quaerat est qui. Corrupti sit aut voluptas ut rem in optio. Et praesentium ut placeat reprehenderit. Omnis sit et et reprehenderit eum similique et sed. Rerum sit voluptates atque nihil blanditiis eum. Quod enim accusantium ducimus et enim.', '142.00', 15.00, 1, 'phone-5.jpg', 7, '2023-03-15 14:18:52', '2023-03-15 14:18:52'),
 (46, 'provident ea enim impedit consequatur accusamus', 'provident-ea-enim-impedit-consequatur-accusamus', 'Accusamus est nemo dolorem ipsum qui omnis. Enim est voluptas consequatur earum quas. Dignissimos nihil id et illum. Dolor doloremque voluptas expedita officia cum voluptates qui. Quia voluptates blanditiis et ab nemo. Voluptatibus et veniam excepturi quidem illo. Non minus ipsum mollitia sequi. Odit est perferendis reprehenderit qui vitae amet. Itaque voluptatem veritatis amet quis. Exercitationem fuga ullam tempora quos.', '327.00', 38.00, 1, 'phone-6.jpg', 8, '2023-03-15 14:18:52', '2023-03-15 14:18:52'),
 (47, 'provident voluptatum corporis aut nostrum voluptas', 'provident-voluptatum-corporis-aut-nostrum-voluptas', 'Totam fuga quia ratione enim in. Ab omnis est quo eos provident. Ea culpa et nostrum id labore dolor nam. Temporibus necessitatibus omnis voluptatem et. Dicta sint necessitatibus atque nam quisquam consequuntur illo facilis. Aut veritatis temporibus nostrum maxime est qui accusamus. Quidem illum eius velit quisquam animi nam laudantium. Laboriosam dolorem illum totam in tempora porro vero doloribus.', '277.00', 10.00, 0, 'mouse-5.jpg', 10, '2023-03-15 14:27:25', '2023-03-15 14:27:25'),
-(48, 'iste quidem asperiores ut ab ea', 'iste-quidem-asperiores-ut-ab-ea', 'Exercitationem dolore iure cupiditate veritatis id dicta ut. Nobis dolores officiis sed magnam dolores. Dolore animi iste cum ut in iure aut. Est a praesentium iste sit unde. Beatae corporis tempore eius enim laboriosam. Pariatur facilis magnam voluptas eos unde dolores sint est. Non rerum modi a earum saepe rerum neque.', '207.00', 23.00, 1, 'mouse-3.jpg', 18, '2023-03-15 14:27:25', '2023-03-15 14:27:25'),
-(49, 'omnis voluptas rerum dicta in amet', 'omnis-voluptas-rerum-dicta-in-amet', 'Exercitationem aspernatur et modi in. Magnam explicabo laudantium excepturi accusamus. Aut id repellat laboriosam ut minima. Dolorem sit assumenda accusantium esse. Voluptatum corrupti quaerat ea et officia omnis maxime. Dicta rerum maxime enim. Quo nemo dolorem rerum non molestiae in. Sunt eveniet autem perferendis suscipit tempora. Id voluptas eos recusandae ducimus excepturi ea aut nobis. Distinctio ex labore iste aut veritatis unde.', '403.00', 45.00, 1, 'mouse-6.jpg', 18, '2023-03-15 14:27:25', '2023-03-15 14:27:25'),
 (50, 'excepturi totam libero dolores dolor sit', 'excepturi-totam-libero-dolores-dolor-sit', 'Ratione ullam magni autem blanditiis alias. Sit voluptatem quod enim dolor expedita delectus. A expedita atque aut corrupti repellat. Ipsum est nam facere. Nemo voluptas nihil adipisci fugiat cumque asperiores. Aliquam et omnis natus sequi. Aut magni sunt et aut necessitatibus beatae et. Iste consequatur quo sunt sed. Voluptatibus omnis non et eum voluptas ratione. Rerum quam est omnis sed neque quasi. Culpa explicabo veritatis voluptatem maxime.', '242.00', 34.00, 1, 'mouse-1.jpg', 10, '2023-03-15 14:27:25', '2023-03-15 14:27:25'),
 (51, 'ut facere et sed aut earum', 'ut-facere-et-sed-aut-earum', 'Veritatis repudiandae perferendis dolor cupiditate ad. Quidem nihil consequatur ut facilis. Esse totam veritatis et. Cupiditate eum officia fugiat quia libero repudiandae aut. Error quis at error in quas ea. Facilis quisquam ipsum aliquam provident porro optio saepe. Reiciendis est quis soluta ut reiciendis nemo porro. Quo quaerat cumque explicabo ratione dolores et. Tempore ut ipsam quia. Repudiandae harum aspernatur reiciendis aliquam.', '181.00', 19.00, 1, 'mouse-5.jpg', 12, '2023-03-15 14:27:25', '2023-03-15 14:27:25'),
 (52, 'autem quidem consequatur sapiente maiores hic', 'autem-quidem-consequatur-sapiente-maiores-hic', 'Perferendis eaque ut et unde et. Ut eum saepe et ut. Suscipit molestiae quis ut officia voluptatum veritatis voluptatibus. Et quia qui totam provident et. Ut voluptates sapiente blanditiis id tenetur. Eligendi perspiciatis labore voluptatibus atque. Consequatur ut velit quis. Hic inventore eos eum quas expedita. Et id in similique ea voluptas corporis. Exercitationem neque omnis et qui animi qui et.', '287.00', 45.00, 1, 'mouse-2.jpg', 10, '2023-03-15 14:27:25', '2023-03-15 14:27:25'),
-(53, 'est ut dolores inventore inventore in', 'est-ut-dolores-inventore-inventore-in', 'Eius est commodi id porro. Eligendi eos qui molestiae sapiente rem laudantium veniam. Sint aut voluptas aut iure. Et cumque commodi nobis quidem sint est. Facilis et laudantium voluptatem sint. Ratione sit odio asperiores est veritatis. Ut repellendus non non dolor labore. Ut voluptate cumque amet aut optio nihil molestiae ullam. Voluptas animi sapiente nulla rem aut. Tempore expedita ut vitae corrupti eum voluptatum et. Ipsa velit atque sapiente nisi quae.', '236.00', 23.00, 1, 'mouse-8.jpg', 18, '2023-03-15 14:27:25', '2023-03-15 14:27:25'),
 (54, 'et et voluptatem laborum mollitia facere', 'et-et-voluptatem-laborum-mollitia-facere', 'Consequatur incidunt quas tenetur nihil fugiat rerum quos omnis. Aliquid libero et aliquam soluta est ut. Aliquam quidem fuga beatae tempora. Distinctio suscipit aut quo laudantium necessitatibus quia voluptatem iure. Harum deleniti sunt dolorem quia reprehenderit enim sed. Nesciunt repellendus reiciendis occaecati nulla iste modi. Rerum nisi voluptas consequatur cupiditate nesciunt nemo incidunt.', '480.00', 17.00, 0, 'mouse-3.jpg', 10, '2023-03-15 14:27:25', '2023-03-15 14:27:25'),
 (55, 'error veritatis voluptatem laudantium autem repudiandae', 'error-veritatis-voluptatem-laudantium-autem-repudiandae', 'Ut qui ab veniam occaecati est perspiciatis repudiandae ut. Voluptatem possimus consequatur consectetur harum qui. Error enim et placeat sint sequi. Totam voluptas et reiciendis saepe. Itaque quaerat et corrupti dignissimos quasi. Fugit odit error voluptate repudiandae. Dignissimos quis sit iusto non blanditiis. Ad rem voluptas iusto quae. Omnis et placeat consectetur atque voluptatem voluptates. Quos assumenda veniam et unde pariatur.', '331.00', 25.00, 1, 'mouse-1.jpg', 12, '2023-03-15 14:27:25', '2023-03-15 14:27:25'),
 (56, 'temporibus in possimus ab a iste', 'temporibus-in-possimus-ab-a-iste', 'Et facere cupiditate officia doloribus quis et sequi. Tempora doloribus exercitationem dolor iste. Tenetur maiores qui numquam et. Ex qui voluptatum quo quisquam atque. Voluptates alias vero deserunt tempore quo nesciunt nihil amet. Fugiat ex amet consequatur non. Nisi occaecati iusto consectetur sint ullam. Dolor voluptas ea ut omnis quis. Doloremque eius voluptatibus ullam similique.', '58.00', 44.00, 1, 'mouse-7.jpg', 10, '2023-03-15 14:27:25', '2023-03-15 14:27:25'),
-(57, 'laudantium vitae quia doloremque sint eaque', 'laudantium-vitae-quia-doloremque-sint-eaque', 'Expedita eius ipsam sed qui accusantium cumque autem. Velit consequatur esse et quis dolorum et. Fugit numquam accusantium qui ea commodi illum. Pariatur sit harum consequuntur qui. Aliquid quae in velit quasi temporibus ducimus cupiditate rerum. Aliquam nisi id est incidunt ipsam qui. Perspiciatis nemo consequatur provident distinctio doloremque aut ut. Libero expedita possimus iure aliquam architecto. Voluptas quia nulla ut quibusdam qui.', '258.00', 15.00, 0, 'mouse-10.jpg', 18, '2023-03-15 14:27:25', '2023-03-15 14:27:25'),
 (58, 'placeat sapiente illum eum autem aut', 'placeat-sapiente-illum-eum-autem-aut', 'Eligendi ad sed dignissimos quia earum veniam. Asperiores veritatis est vel perferendis qui enim. Quae iure fugiat eveniet atque. Accusamus nulla molestiae est officiis sit id dolore vel. Itaque sed aut ducimus modi. Saepe vel commodi laudantium voluptatum sint eligendi officia. Ducimus dolor qui nulla beatae fugit eveniet. A rerum est sed reprehenderit sed aliquam reprehenderit. Sapiente et facilis voluptate est et et qui. Enim itaque recusandae ullam perspiciatis sapiente voluptas.', '317.00', 25.00, 0, 'mouse-3.jpg', 12, '2023-03-15 14:27:25', '2023-03-15 14:27:25'),
-(59, 'commodi quia dolor et neque ut', 'commodi-quia-dolor-et-neque-ut', 'Enim non ab aliquam ut. Perferendis dolor minus a officiis unde iusto dolore voluptatem. Vitae qui itaque consequatur beatae placeat. Sunt iste suscipit quibusdam aliquid consequatur. Eius ducimus voluptate autem accusantium. Aspernatur porro iusto aperiam qui consequatur iste eius. Deleniti aperiam sunt ut. Adipisci a quia a omnis sed sed beatae dignissimos. Nam veniam voluptatem debitis vel.', '331.00', 23.00, 0, 'mouse-4.jpg', 18, '2023-03-15 14:27:25', '2023-03-15 14:27:25'),
 (60, 'ratione maxime sequi minima et officia', 'ratione-maxime-sequi-minima-et-officia', 'Nihil fuga est odit quia id ut eos aperiam. Ut incidunt atque vero in occaecati exercitationem. Et omnis repudiandae fuga similique doloremque harum. Tempore occaecati accusamus asperiores nesciunt. Fuga autem voluptatem reiciendis sint tempora debitis. Nulla alias voluptas possimus aut quos quis. Quae ullam est quo excepturi qui. Error velit et illo. Repellendus qui magnam et sed. Nemo earum unde et laborum. Velit iste et molestiae quo ea dolores.', '82.00', 41.00, 1, 'mouse-2.jpg', 12, '2023-03-15 14:27:25', '2023-03-15 14:27:25'),
 (61, 'officiis at cupiditate vel quos distinctio', 'officiis-at-cupiditate-vel-quos-distinctio', 'Voluptatum qui nostrum quod hic. Ducimus tempora vero iusto mollitia rerum voluptates nostrum. Et qui tempora accusantium eveniet rem autem voluptas. Culpa aut omnis dolorum. Blanditiis et numquam dolore. Qui aut sit maxime sed ut et vel. Eligendi id possimus fuga repellat enim voluptatibus et. Qui quis molestiae illo sit molestias molestias. Eos quia nostrum quasi rem vel nemo. Asperiores quia et ratione cupiditate in suscipit.', '500.00', 49.00, 0, 'mouse-8.jpg', 10, '2023-03-15 14:27:26', '2023-03-15 14:27:26'),
 (62, 'iste corporis corrupti est dolorem sit', 'iste-corporis-corrupti-est-dolorem-sit', 'Iure iusto voluptates deserunt. Recusandae sint est hic et explicabo voluptatem. Soluta voluptates sed mollitia quis provident porro et. Incidunt ea temporibus ut harum assumenda ut. Accusantium voluptas voluptatem dolor dolore id sapiente. Velit sunt sint iure voluptatem. Modi omnis fuga magni labore quam rerum. Nesciunt dolorem dolore sed assumenda nam. Voluptatibus accusamus esse facere blanditiis voluptas maiores quia.', '442.00', 43.00, 1, 'keyboard-7.jpg', 17, '2023-03-15 14:28:00', '2023-03-15 14:28:00'),
@@ -229,7 +225,38 @@ INSERT INTO `products` (`id`, `name`, `slug`, `description`, `price`, `quantity`
 (73, 'et dignissimos animi est ut velit', 'et-dignissimos-animi-est-ut-velit', 'Nobis optio culpa sequi est ut voluptate. Omnis ut asperiores qui sed exercitationem. Ducimus sit vel quo alias reprehenderit iusto perspiciatis nulla. Itaque ex id fugit debitis sed pariatur. Nobis eveniet consectetur vel adipisci ut. Maiores voluptatibus quam harum quaerat. Doloribus et qui et consequatur similique mollitia. Dicta et maxime distinctio non sunt. Inventore sapiente odio et impedit ipsum. Aut et modi minus voluptate quidem molestias.', '234.00', 19.00, 0, 'keyboard-3.jpg', 14, '2023-03-15 14:28:01', '2023-03-15 14:28:01'),
 (74, 'maiores omnis qui explicabo incidunt officiis', 'maiores-omnis-qui-explicabo-incidunt-officiis', 'Aperiam omnis odit excepturi nihil. Ipsa quo nam quia quaerat accusamus culpa architecto cumque. Facilis et illum eius sint. Animi delectus dolorem sed est enim commodi. Et quas dolores perspiciatis aut reprehenderit. Et cupiditate eaque iste fugit distinctio velit omnis dolorum. Architecto quo quia maxime earum eum vel impedit. Quo aut odit eveniet quaerat facere odit maxime. Eos aut eos odio explicabo soluta.', '133.00', 36.00, 1, 'keyboard-5.jpg', 14, '2023-03-15 14:28:01', '2023-03-15 14:28:01'),
 (75, 'qui provident consequatur qui eligendi explicabo', 'qui-provident-consequatur-qui-eligendi-explicabo', 'Placeat qui ut aspernatur ut ullam et rerum. At explicabo quis eum illo doloremque consectetur sit. Ab officia et sequi. Non modi dignissimos nam consequatur iste. Quas quaerat perferendis deserunt voluptate cupiditate. Itaque aliquam error error rem id. Deleniti ab qui dicta tempora aspernatur tempore. Eum nemo cupiditate error repudiandae nisi quo ex amet. Et veritatis molestiae et. Totam totam tempore non eaque illum est recusandae autem. Ut consequuntur et quasi.', '460.00', 14.00, 0, 'keyboard-10.jpg', 13, '2023-03-15 14:28:01', '2023-03-15 14:28:01'),
-(76, 'magni vero neque ut vel exercitationem', 'magni-vero-neque-ut-vel-exercitationem', 'Consectetur nulla ut laudantium in. Qui qui nesciunt nobis. Et rerum hic iure quae sed. Amet et debitis consequatur ex suscipit. Non tempora ut eos minus ut incidunt eos. Omnis cum non dignissimos vero omnis. Doloremque et dolores dolorem at aut. Quo cumque impedit sit debitis. Magnam vitae doloribus et. Vero quam maiores quis sed quos. Ullam temporibus dignissimos et sed sit. Nihil et qui dolore sunt numquam. Fugiat distinctio in est. Sit quia et rerum.', '14.00', 44.00, 0, 'keyboard-3.jpg', 9, '2023-03-15 14:28:01', '2023-03-15 14:28:01');
+(76, 'magni vero neque ut vel exercitationem', 'magni-vero-neque-ut-vel-exercitationem', 'Consectetur nulla ut laudantium in. Qui qui nesciunt nobis. Et rerum hic iure quae sed. Amet et debitis consequatur ex suscipit. Non tempora ut eos minus ut incidunt eos. Omnis cum non dignissimos vero omnis. Doloremque et dolores dolorem at aut. Quo cumque impedit sit debitis. Magnam vitae doloribus et. Vero quam maiores quis sed quos. Ullam temporibus dignissimos et sed sit. Nihil et qui dolore sunt numquam. Fugiat distinctio in est. Sit quia et rerum.', '14.00', 44.00, 0, 'keyboard-3.jpg', 9, '2023-03-15 14:28:01', '2023-03-15 14:28:01'),
+(86, 'Mouse Charging Dock for Razer Wireless Mouse Viper Ultimate Naga pro DeathAdder V2 Pro and Basilisk Ultimate Magnetic', 'mouse-charging-dock-for-razer-wireless-mouse-viper-ultimate-naga-pro-deathadder-v2-pro-and-basilisk-ultimate-magnetic', '【Compatibility】Designed to work with DeathAdder V2 Pro, Naga Pro, Viper Ultimate, and Basilisk Ultimate. Offers effortless, full integration with popular game titles and syncs.\n【Anti-Slip Gecko Feet】Anti-Slip Grip Tape - Self-Adhesive Design : Ensures better adhesion to surfaces for safe, long- term placement,the dock has a tacky underside that gives it an incredible amount of grip to ensure it never topples over,yet is gentle enough to not leave any sticky markings on your desk.\n【Unlimited charging and endless playing】Keep your game going with the mouse dock chroma -a wireless mouse charging dock.\n【More Flexible】Micro port used to connect the computer for receiver and charging requirements，Adapted to a variety of wireless mouse.\n【High Speed Wireless】Magnetic Dock with Charge Status For a connection faster than wired mice，For uninterrupted gameplay.', '17.00', 250.00, 1, '1679334094.jpg', 10, '2023-03-20 16:41:34', '2023-03-20 16:41:34');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shoppings`
+--
+
+CREATE TABLE `shoppings` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `quantity` double NOT NULL,
+  `type` int(11) NOT NULL COMMENT '1 for cart and 0 for wishlist',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `shoppings`
+--
+
+INSERT INTO `shoppings` (`id`, `user_id`, `product_id`, `quantity`, `type`, `created_at`, `updated_at`) VALUES
+(85, 6, 20, 1, 1, '2023-03-22 15:06:11', '2023-03-22 15:06:11'),
+(86, 6, 73, 1, 1, '2023-03-22 15:06:18', '2023-03-22 15:06:18'),
+(91, 6, 10, 1, 1, '2023-03-22 15:35:29', '2023-03-22 15:35:29'),
+(92, 6, 30, 1, 1, '2023-03-22 15:35:50', '2023-03-22 15:35:50'),
+(93, 6, 31, 1, 1, '2023-03-22 15:36:04', '2023-03-22 15:36:04'),
+(94, 6, 3, 1, 1, '2023-03-22 15:36:09', '2023-03-22 15:36:09'),
+(95, 6, 64, 1, 1, '2023-03-22 15:36:13', '2023-03-22 15:36:13'),
+(96, 6, 23, 2, 1, '2023-03-22 15:36:17', '2023-03-22 15:36:43');
 
 -- --------------------------------------------------------
 
@@ -255,7 +282,7 @@ INSERT INTO `sub_categories` (`id`, `subcategory`, `slug`, `category_id`, `creat
 (2, 'minima laudantium', 'minima-laudantium', 2, '2023-03-15 13:44:35', '2023-03-15 13:44:35'),
 (3, 'est culpa', 'est-culpa', 1, '2023-03-15 13:44:35', '2023-03-15 13:44:35'),
 (4, 'libero voluptatem', 'libero-voluptatem', 3, '2023-03-15 13:44:35', '2023-03-15 13:44:35'),
-(5, 'omnis sint', 'omnis-sint', 3, '2023-03-15 13:44:35', '2023-03-15 13:44:35'),
+(5, 'Samsung', 'samsung', 3, '2023-03-15 13:44:35', '2023-03-20 17:19:29'),
 (6, 'laborum sunt', 'laborum-sunt', 3, '2023-03-15 13:44:35', '2023-03-15 13:44:35'),
 (7, 'eveniet facere', 'eveniet-facere', 3, '2023-03-15 13:44:35', '2023-03-15 13:44:35'),
 (8, 'non placeat', 'non-placeat', 3, '2023-03-15 13:44:35', '2023-03-15 13:44:35'),
@@ -268,7 +295,10 @@ INSERT INTO `sub_categories` (`id`, `subcategory`, `slug`, `category_id`, `creat
 (15, 'repudiandae similique', 'repudiandae-similique', 3, '2023-03-15 13:44:35', '2023-03-15 13:44:35'),
 (16, 'reiciendis eos', 'reiciendis-eos', 3, '2023-03-15 13:44:35', '2023-03-15 13:44:35'),
 (17, 'quas est', 'quas-est', 5, '2023-03-15 13:44:35', '2023-03-15 13:44:35'),
-(18, 'mollitia molestiae', 'mollitia-molestiae', 4, '2023-03-15 13:44:36', '2023-03-15 13:44:36');
+(19, 'Apple', 'apple', 3, '2023-03-20 17:15:21', '2023-03-20 17:24:54'),
+(20, 'Huawei', 'huawei', 3, '2023-03-20 17:25:10', '2023-03-20 17:25:10'),
+(21, 'Nokia', 'nokia', 3, '2023-03-20 17:25:24', '2023-03-20 17:25:24'),
+(22, 'Sony', 'sony', 3, '2023-03-20 17:25:42', '2023-03-20 17:25:42');
 
 -- --------------------------------------------------------
 
@@ -299,7 +329,7 @@ INSERT INTO `users` (`id`, `name`, `role`, `email`, `username`, `email_verified_
 (3, 'Josh Farrell', '0', 'heidenreich.mathias@example.org', 'Carlee', '2023-03-14 18:25:15', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'xrzLb1Af9I', '2023-03-14 18:25:15', '2023-03-14 18:25:15'),
 (4, 'Royal Ziemann', '0', 'dion.hills@example.com', 'Rosalinda', '2023-03-14 18:25:15', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '2rco8qnZ3e', '2023-03-14 18:25:15', '2023-03-14 18:25:15'),
 (5, 'Merlin Bednar', '0', 'uarmstrong@example.org', 'Emily', '2023-03-14 18:25:15', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'FS0y6bj4sj', '2023-03-14 18:25:15', '2023-03-14 18:25:15'),
-(6, 'Mohamed', '0', 'mohamed@gmail.com', NULL, NULL, '$2y$10$1e7MA09a.rtClHeyHLRBVexKkH87Mi4lDKJJ9OlNjsnyHPaz90vIq', 'BAe6QObChvzJy5PyFYocCzZhvsh2DJntIf9F2W7Iu0PktCr9BddyBK6Vhb6x', '2023-03-14 18:53:10', '2023-03-14 18:53:10'),
+(6, 'Mohamed', '0', 'mohamed@gmail.com', NULL, NULL, '$2y$10$1e7MA09a.rtClHeyHLRBVexKkH87Mi4lDKJJ9OlNjsnyHPaz90vIq', 'FzzOHTlnrZFMw1yIfp6MVyGc5V8L77bkItKqzXzgPS876mIwHSKXdzB3hAYg', '2023-03-14 18:53:10', '2023-03-14 18:53:10'),
 (7, 'Mohammed Ameziane', '0', 'simo@gmail.com', NULL, NULL, '$2y$10$x2s8OHraoK4Mz2EGhiC5su.3WY7Oc/aMeqUcZg8BLXZ.kOhZ4FZjS', NULL, '2023-03-15 00:01:01', '2023-03-15 00:01:01'),
 (8, 'Khaled', '0', 'khaled@gmail.com', NULL, NULL, '$2y$10$/bvMuJhuP780aaIga5Ihsu9IVq3RFYht2P9Muxtd.tVPQttuTuL8i', NULL, '2023-03-15 00:50:13', '2023-03-15 00:50:13');
 
@@ -356,6 +386,14 @@ ALTER TABLE `products`
   ADD KEY `products_sub_category_id_foreign` (`sub_category_id`);
 
 --
+-- Indexes for table `shoppings`
+--
+ALTER TABLE `shoppings`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `shoppings_user_id_foreign` (`user_id`),
+  ADD KEY `shoppings_product_id_foreign` (`product_id`);
+
+--
 -- Indexes for table `sub_categories`
 --
 ALTER TABLE `sub_categories`
@@ -378,7 +416,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -390,7 +428,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -402,13 +440,19 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+
+--
+-- AUTO_INCREMENT for table `shoppings`
+--
+ALTER TABLE `shoppings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT for table `sub_categories`
 --
 ALTER TABLE `sub_categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -425,6 +469,13 @@ ALTER TABLE `users`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_sub_category_id_foreign` FOREIGN KEY (`sub_category_id`) REFERENCES `sub_categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `shoppings`
+--
+ALTER TABLE `shoppings`
+  ADD CONSTRAINT `shoppings_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `shoppings_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `sub_categories`

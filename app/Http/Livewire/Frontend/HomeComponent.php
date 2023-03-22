@@ -14,7 +14,7 @@ class HomeComponent extends Component
     public $counter;
 
 
-    public function productid($id){
+    public function incrementCartCount($id){
         $this->product_id = $id;
         $this->counter ++;
     }
@@ -23,13 +23,15 @@ class HomeComponent extends Component
     public function addcart(){
 
         if(Shopping::where('product_id',$this->product_id)->exists()){
-            $findid             = Shopping::where('product_id',$this->product_id)->first();
+            $findid                     = Shopping::where('product_id',$this->product_id)->first();
             $getid = $findid->id;
             $updatequantity             = Shopping::find($getid);
             $updatequantity->quantity   = $updatequantity->quantity + 1;
             $updatequantity->save();
             session()->flash('message', "Already Added to cart");
+
         }else{
+
             if(Auth::user()){
                 $shop = new Shopping();
                 $shop->product_id   = $this->product_id;

@@ -1,5 +1,5 @@
 @foreach ( $categories as $category )
-<div class="category-item">
+<div class="category-item" wire:id = {{$category->id}}>
     <a href="{{route('category',$category->slug)}}" class="flexing">
     {{$category->category}}
     <i class="fa-solid fa-chevron-right icon-menu-right"></i>

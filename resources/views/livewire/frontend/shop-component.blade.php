@@ -32,15 +32,15 @@
                 <div class="sidebar-item">
                 <div class="sidebar-title">Filter Search</div>
                 <form action="#" class="form-filter">
-                    <div class="filter-title">Filter by price</div>
+                    <h2 class="filter-title">Filter by price</h2>
                     <div class="filter-input">
-                    <input type="range" class="filter-input-min" value="0" min="0" max="250" id="shoppricefrom">
-                    <input type="range" class="filter-input-min" value="0" min="0" max="250" id="shoppriceto">
+                        <input type="range" class="filter-input-min" value="0" min="0" max="250" id="shoppricefrom">
+                        <input type="range" class="filter-input-min" value="0" min="0" max="250" id="shoppriceto">
                     </div>
                     <div class="ranger-price">
-                    Price Between:  
-                    <span class="price-from">0$</span> <b> — </b>
-                    <span class="price-to">250$</span>
+                        Price Between:  
+                        <span class="price-from">0$</span> <b> — </b>
+                        <span class="price-to">250$</span>
                     </div>
                     <input type="submit" value="Apply Filter " class="btn-action my-3">
                 </form>

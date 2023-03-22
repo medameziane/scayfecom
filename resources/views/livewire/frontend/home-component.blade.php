@@ -49,14 +49,17 @@
                                         class="btn-action" 
                                         id = "product_{{$product->id}}"
                                         wire:model = "counter"
-                                        wire:click="productid({{$product->id}})">
-                                        <span wire:loading.remove wire:target="productid({{$product->id}})">
+                                        wire:click="incrementCartCount({{$product->id}})"
+                                        {{-- wire:click="$emit('shopping-count')" --}}
+                                        >
+                                        <span wire:loading.remove wire:target="incrementCartCount({{$product->id}})">
                                             <i class="fa-solid fa-cart-plus"></i> 
                                             Add to cart
                                         </span>
-                                    <div wire:loading wire:target= "productid({{$product->id}})">
-                                        Adding to cart ... <i class="fa-solid fa-spinner fa-spin"></i>
-                                    </div>
+                                        
+                                        <span wire:loading wire:target= "incrementCartCount({{$product->id}})">
+                                            Adding to cart ... <i class="fa-solid fa-spinner fa-spin"></i>
+                                        </span>
                                 </button>
                             </div>
                         </form>
