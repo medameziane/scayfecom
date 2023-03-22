@@ -10,13 +10,9 @@ use Illuminate\Support\Facades\Auth;
 class HomeComponent extends Component
 {
     public $product_id;
-    public $cartcount;
-    public $counter;
-
 
     public function incrementCartCount($id){
         $this->product_id = $id;
-        $this->counter ++;
     }
 
     // Add to cart
@@ -28,8 +24,10 @@ class HomeComponent extends Component
             $updatequantity             = Shopping::find($getid);
             $updatequantity->quantity   = $updatequantity->quantity + 1;
             $updatequantity->save();
+            $this->emit('cardupdated');
+            $this->emit('hiddencartupdated');
             session()->flash('message', "Already Added to cart");
-
+            
         }else{
 
             if(Auth::user()){
@@ -39,6 +37,8 @@ class HomeComponent extends Component
                 $shop->quantity     = 1;
                 $shop->type         = 1;
                 $shop->save();
+                $this->emit('cardupdated');
+                $this->emit('hiddencartupdated');
                 session()->flash('message', "Your product has been added successfully");
             }else{
                 return redirect()->Route("login");

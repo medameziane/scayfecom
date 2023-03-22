@@ -48,10 +48,7 @@
                                 <button type="submit" 
                                         class="btn-action" 
                                         id = "product_{{$product->id}}"
-                                        wire:model = "counter"
-                                        wire:click="incrementCartCount({{$product->id}})"
-                                        {{-- wire:click="$emit('shopping-count')" --}}
-                                        >
+                                        wire:click="incrementCartCount({{$product->id}})">
                                         <span wire:loading.remove wire:target="incrementCartCount({{$product->id}})">
                                             <i class="fa-solid fa-cart-plus"></i> 
                                             Add to cart

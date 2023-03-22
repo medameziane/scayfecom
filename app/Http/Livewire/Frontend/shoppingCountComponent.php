@@ -7,12 +7,13 @@ use App\Models\Shopping;
 use Illuminate\Support\Facades\Auth;
 class ShoppingCountComponent extends Component
 {
-    public $cartcount;
-    public $wishlistcount;
+    public $cartcount , $wishlistcount;
+
+    protected $listeners = ["cardupdated" => "checkcart","wishlistupdated"=>"checkwishlist"];
     
     public function checkcart(){
         if(Auth::check()){
-            return $this->cartcount     = Shopping::all()->where('user_id',auth::user()->id)->where('type',1)->count();
+            return $this->cartcount = Shopping::all()->where('user_id',auth::user()->id)->where('type',1)->count();
         }else{
             return $this->cartcount = 0;
         }
@@ -28,8 +29,11 @@ class ShoppingCountComponent extends Component
 
     public function render()
     {
-        $this->cartcount    = $this->checkcart();
-        $this->wishlistcount = $this->checkwishlist();
-        return view('livewire.frontend.shopping-count-component',["cartcount"=>$this->cartcount],[["wishlistcount"=>$this->wishlistcount]]);
+        $this->cartcount        = $this->checkcart();
+        $this->wishlistcount    = $this->checkwishlist();
+        return view('livewire.frontend.shopping-count-component',
+                    ["cartcount"=>$this->cartcount],
+                    ["wishlistcount"=>$this->wishlistcount]
+                );
     }
 }
