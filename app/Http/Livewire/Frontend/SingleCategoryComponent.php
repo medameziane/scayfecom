@@ -20,7 +20,6 @@ class SingleCategoryComponent extends Component
     }
 
     public function render(){
-        $categories             =   Category::all();
         $singleSlide            =   Category::inRandomOrder()->limit(2)->get();
         $singlecategory         =   Category::where('slug',$this->category)->get();
         $singlesubcategory      =   SubCategory::where('slug',$this->subcategory)->get();
@@ -30,11 +29,9 @@ class SingleCategoryComponent extends Component
         );
 
         if($this->subcategory != null){
-            return view('livewire.frontend.shop-component',compact("singlesubcategory"))
-                        ->layout('layouts.app',compact("categories"));
+            return view('livewire.frontend.shop-component',compact("singlesubcategory"));
         }else{
-            return view('livewire.frontend.single-category-component',$data)
-                        ->layout('layouts.app',compact("categories"));
+            return view('livewire.frontend.single-category-component',$data);
         }
     }
 }

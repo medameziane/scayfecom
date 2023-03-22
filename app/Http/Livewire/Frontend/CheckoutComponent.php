@@ -3,14 +3,13 @@
 namespace App\Http\Livewire\Frontend;
 
 use Livewire\Component;
-
-use App\Models\Category;
+use App\Models\Shopping;
 
 class CheckoutComponent extends Component
 {
     public function render()
     {        
-        $categories = Category::all();
-        return view('livewire.frontend.checkout-component')->layout('layouts.app',compact("categories"));
+        $checkouts  = Shopping::all()->where("type",1);
+        return view('livewire.frontend.checkout-component',compact("checkouts"));
     }
 }

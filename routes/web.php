@@ -4,13 +4,17 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 // Admin Livewires
+use App\Http\Livewire\Admin\DashboardComponent;
+
 use App\Http\Livewire\Admin\Product\ProductComponent;
 use App\Http\Livewire\Admin\Product\AddProductComponent;
 use App\Http\Livewire\Admin\Product\EditProductComponent;
 use App\Http\Livewire\Admin\Product\ShowProductComponent;
+
 use App\Http\Livewire\Admin\Category\CategoryComponent;
 use App\Http\Livewire\Admin\Category\AddCategoryComponent;
 use App\Http\Livewire\Admin\Category\EditCategoryComponent;
+
 use App\Http\Livewire\Admin\SubCategory\SubCategoryComponent;
 use App\Http\Livewire\Admin\SubCategory\AddSubCategoryComponent;
 use App\Http\Livewire\Admin\SubCategory\EditSubCategoryComponent;
@@ -28,9 +32,7 @@ use App\Http\Livewire\Frontend\ShopComponent;
 // Admin Routes
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name("dashboard");
+    Route::get('/dashboard', DashboardComponent::class)->name("dashboard");
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -576,7 +576,6 @@ img{
   flex: 1;
   border-radius: 10px;
 }
-
 .daily-selles .d-selle:hover{
   border-color: var(--main-color);
   transition: .3s;
@@ -701,7 +700,6 @@ img{
   color: var(--main-color);
   border-bottom: 1px solid var(--main-color);
 }
-
 /* Start edit footer */
 
 
@@ -978,6 +976,12 @@ img{
   width: 200px;
   margin: 0 10px;
   cursor: pointer;
+}
+.checkout-section .form-section input[type="radio"]{
+  width: 20px;
+  height: 20px;
+  outline: none;
+  border: 1px solid var(--main-color);
 }
 .checkout-section .payment-methods .form-section .checkout-method-info{
   padding: 10px;

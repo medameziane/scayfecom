@@ -51,14 +51,18 @@ subtotals.forEach(sub=>{
 })
 minus.forEach((min)=>{
   min.onclick = (e)=>{
+
     let getdata = e.currentTarget.dataset['calc']
     let getdataqte = e.currentTarget.dataset['qte']
+    let getdproductprice = e.currentTarget.dataset['price']
+
     let product_sub_price = document.getElementById(getdata)
+
     if(document.getElementById(getdataqte).value > 1){
       calctotal -= parseInt(product_sub_price.value,10)
       document.getElementById(getdataqte).value --
       let product_qte   = document.getElementById(getdataqte).value
-      let product_price = document.getElementById("product-price").value
+      let product_price = document.getElementById(getdproductprice).value
       product_sub_price.value =  `${parseInt(product_qte,10) * parseInt(product_price,10)} $`
       calctotal += parseInt(product_sub_price.value,10)
       total.value = calctotal +"$"
@@ -132,7 +136,7 @@ if(qte_minus && qte_plus){
 /*--------- Start checkout ---------*/
 let checkoutform = document.getElementById("checkout-form")
 let cod = document.getElementById("cod")
-if(checkoutform){
+if(checkoutform || cod){
   checkoutform.onsubmit = (e)=>{
     e.preventDefault()
     let terms = document.getElementById("terms")
@@ -168,8 +172,6 @@ if(checkoutform){
       document.querySelector(".terms").style.color="black"
     }
   }
-}
-if(cod){
   cod.onclick = ()=>{
     document.querySelector(".cod").classList.add("dblock")
   }
@@ -186,15 +188,7 @@ if(closeCart || cart){
     document.querySelector(".cart-hidden").classList.remove("active")
   }
 }
-function addcart(){
-  let cartcount = countercart.innerHTML
-  cartcount++;
-  countercart.innerHTML = cartcount;
-  document.querySelector(".product-overly").classList.add("show")
-  window.setTimeout(()=>{
-    document.querySelector(".product-overly").classList.remove("show")
-  },2000)
-}
+let product_overly = document.querySelector(".product-overly")
 
 /*--------- Start Shop page  ---------*/
 let shoppriceto = document.getElementById("shoppriceto")

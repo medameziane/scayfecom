@@ -21,7 +21,6 @@ class ProductDetailsComponent extends Component
     
     public function render()
     {
-        $categories         = Category::all();
         $productdetails     = Product::where('slug',$this->slug)->get();
         $subcategory        = SubCategory::where("id",$productdetails[0]->sub_category_id)->get();
         $category           = Category::where("id",$subcategory[0]->category_id)->get();
@@ -33,7 +32,6 @@ class ProductDetailsComponent extends Component
             "r_products",
         );
 
-        return view('livewire.frontend.product-details-component',$data)
-                    ->layout('layouts.app',compact("categories"));
+        return view('livewire.frontend.product-details-component',$data);
     }
 }

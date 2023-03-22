@@ -1,5 +1,11 @@
 @section("title","ScayfEcom")
 <div class="wrrapper">
+    @if (session()->has("message"))
+        <div class="product-overly show" id="product-overly">
+            <i class="fa-solid fa-square-check"></i>
+            <p class="message">{{session("message")}}</p>
+        </div>
+    @endif
     <!-- Start Services -->
     <div class="wrrapper-conrtainer">
         <section class="our-services">
@@ -33,7 +39,6 @@
                         <img src="{{asset('images/products/'.$product->image)}}" alt="{{$product->name}}" />
                     </a>
                     <div class="product-info">
-                        {{ $counter }}
                         <a href="{{route('category',[$product->SubCategory->Category->slug,$product->SubCategory->slug])}}" class="product-category">{{$product->SubCategory->subcategory}}</a>
                         <a href="{{route('details',[$product->slug])}}" class="product-name">{{$product->name}}</a>
                         <div class="product-price">{{$product->price}} $</div>
@@ -42,15 +47,16 @@
                             <div class="product-items flexing">
                                 <button type="submit" 
                                         class="btn-action" 
-                                        {{-- onclick='addcart()' --}}
                                         id = "product_{{$product->id}}"
                                         wire:model = "counter"
                                         wire:click="productid({{$product->id}})">
-                                    <i class="fa-solid fa-cart-plus"></i> 
-                                    Add to cart
-                                    {{-- <div wire:loading.id="product_{{$product->id}}">
-                                        <i class="fa-solid fa-spinner fa-spin"></i>
-                                    </div> --}}
+                                        <span wire:loading.remove wire:target="productid({{$product->id}})">
+                                            <i class="fa-solid fa-cart-plus"></i> 
+                                            Add to cart
+                                        </span>
+                                    <div wire:loading wire:target= "productid({{$product->id}})">
+                                        Adding to cart ... <i class="fa-solid fa-spinner fa-spin"></i>
+                                    </div>
                                 </button>
                             </div>
                         </form>

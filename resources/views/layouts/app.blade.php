@@ -65,16 +65,7 @@
                 <input type="text" class="header-search" placeholder="search here..."/>
                 <i class="fa-solid fa-magnifying-glass search-icon"></i>
               </div>
-              <div class="middle-header-items">
-                <div class="middle-item">
-                  <span class="counter">5</span>
-                  <img src="{{asset('frontend/assets/imgs/icons/icon-heart.svg')}}"/>
-                </div>
-                <div class="middle-item" id="shopping-cart">
-                  <span class="counter" id="countercart">{{count($carts)}}</span>
-                  <img src="{{asset('frontend/assets/imgs/icons/icon-cart.svg')}}"/>
-                </div>
-              </div>
+              <livewire:frontend.shopping-count-component />
             </div>
           </div>
         </div>
@@ -88,20 +79,7 @@
                   <span class="down-icon"><i class="fa-solid fa-chevron-down"></i></span>
                 </div>
                 <div class="categories-menu">
-                  @foreach ( $categories as $category )
-                    <div class="category-item">
-                      <a href="{{route('category',$category->slug)}}" class="flexing">
-                        {{$category->category}}
-                        <i class="fa-solid fa-chevron-right icon-menu-right"></i>
-                      </a>
-                      <div class="sub-categories">
-                        <h3 class="sub-category-title">{{$category->category}}</h3>
-                        @foreach ($category->SubCategory as $SubCategory)
-                          <a href="{{route('category',[$category->slug,$SubCategory->slug])}}" class="sub-category-item flexing">{{$SubCategory->subcategory}}</a>
-                        @endforeach
-                      </div>
-                    </div>
-                  @endforeach
+                  <livewire:frontend.categories-component />
                 </div>
               </div>
               <div class="menus">
@@ -115,39 +93,7 @@
         </div>
       </div>
     </header>
-
-    <div class="cart-hidden">
-      <div class="cart-hidden-header flexing py-3 px-2">
-        <div class="cart-hidden-close" id="close-cart"><i class="fa-solid fa-xmark"></i></div>
-        <div class="cart-hidden-title">Shopping cart</div>
-      </div>
-      <a href="{{route('cart')}}" class="btn-action my-3">View Cart</a>
-      <div class="carts-hidden-items">
-      @foreach ($carts as $cart)
-        <div class="cart-hidden-item flex-start">
-          <a href="{{route('details',[$cart->product->slug])}}" class="product-image">
-            <img src="{{asset('images/products/'.$cart->product->image)}}" alt="{{$cart->product->name}}" />
-          </a>
-          <div class="cart-hidden-info">
-            <a href="{{route('details',[$cart->product->slug])}}" class="cart-hidden-product">{{$cart->product->name}}</a>
-            <p class="cart-hidden-quanity">
-              @if ($cart->product->quantity<20)
-                  <b style="color:red">Only left:</b> {{$cart->product->quantity}}
-                @else
-                  <b>Quantity:</b> {{$cart->product->quantity}}
-              @endif
-            </p>
-            <p class="cart-hidden-price"><b>SubTotal:</b> {{$cart->product->price}}$</p>
-          </div>
-        </div>
-      @endforeach
-      </div>
-    </div>
-    <div class="product-overly">
-      <i class="fa-solid fa-square-check"></i>
-      <p class="message">Your product has been added successfully</p>
-    </div>
-
+    <livewire:frontend.cart-hidden-component />
     
     {{$slot}}
 
