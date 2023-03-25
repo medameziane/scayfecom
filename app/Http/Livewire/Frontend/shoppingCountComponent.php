@@ -34,6 +34,6 @@ class ShoppingCountComponent extends Component
         return view('livewire.frontend.shopping-count-component',
                     ["cartcount"=>$this->cartcount],
                     ["wishlistcount"=>$this->wishlistcount]
-                );
+        );
     }
 }

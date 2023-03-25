@@ -41,13 +41,13 @@
                     <div class="product-info">
                         <a href="{{route('category',[$product->SubCategory->Category->slug,$product->SubCategory->slug])}}" class="product-category">{{$product->SubCategory->subcategory}}</a>
                         <a href="{{route('details',[$product->slug])}}" class="product-name">{{$product->name}}</a>
-                        <div class="product-price">{{$product->price}} $</div>
+                        <p class="product-price">{{$product->price}}$</p>
                         <form wire:submit.prevent ='addcart'>
                             @csrf
                             <div class="product-items flexing">
                                 <button type="submit" 
                                         class="btn-action" 
-                                        id = "product_{{$product->id}}"
+                                        {{-- id = "product_{{$product->id}}" --}}
                                         wire:click="incrementCartCount({{$product->id}})">
                                         <span wire:loading.remove wire:target="incrementCartCount({{$product->id}})">
                                             <i class="fa-solid fa-cart-plus"></i> 
@@ -96,7 +96,7 @@
                     <div class="product-info">
                         <a href="{{route('category',[$productlatestWeek->SubCategory->Category->slug,$productlatestWeek->SubCategory->slug])}}" class="product-category">{{$productlatestWeek->SubCategory->subcategory}}</a>
                         <a href="{{route('details',[$productlatestWeek->slug])}}" class="product-name">{{$productlatestWeek->name}}</a>
-                        <div class="product-price">{{$productlatestWeek->price}} $</div>
+                        <p class="product-price">{{$productlatestWeek->price}}$</p>
                         <span class="available">Available:  <span class="in-stock">{{$productlatestWeek->quantity}}</span> In stock</span>
                     </div>
                 </div>
@@ -117,7 +117,7 @@
                         </a>
                         <div class="product-info">
                             <a href="{{route('details',[$bestsellerproduct->slug])}}" class="product-name">{{$bestsellerproduct->name}}</a>
-                            <div class="product-price">{{$bestsellerproduct->price}} $</div>
+                            <p class="product-price">{{$bestsellerproduct->price}}$</p>
                         </div>
                     </div>
                 @endforeach
@@ -132,7 +132,7 @@
                         </a>
                         <div class="product-info">
                             <a href="{{route('details',[$foryouproduct->slug])}}" class="product-name">{{$foryouproduct->name}}</a>
-                            <div class="product-price">{{$foryouproduct->price}} $</div>
+                            <p class="product-price">{{$foryouproduct->price}}$</p>
                         </div>
                     </div>
                 @endforeach
@@ -147,7 +147,7 @@
                         </a>
                         <div class="product-info">
                             <a href="{{route('details',[$hotproduct->slug])}}" class="product-name">{{$hotproduct->name}}</a>
-                            <div class="product-price">{{$hotproduct->price}} $</div>
+                            <p class="product-price">{{$hotproduct->price}}$</p>
                         </div>
                     </div>
                 @endforeach
@@ -163,7 +163,7 @@
                         </a>
                         <div class="product-info">
                             <a href="{{route('details',[$popularproduct->slug])}}" class="product-name">{{$popularproduct->name}}</a>
-                            <div class="product-price">{{$popularproduct->price}} $</div>
+                            <p class="product-price">{{$popularproduct->price}}$</p>
                         </div>
                     </div>
                 @endforeach
@@ -201,10 +201,26 @@
                                         <div class="product-info">
                                             <a href="{{route('category',[$s_product->SubCategory->Category->slug,$s_product->SubCategory->slug])}}" class="product-category">{{$s_product->SubCategory->subcategory}}</a>
                                             <a href="{{route('details',[$s_product->slug])}}" class="product-name">{{$s_product->name}}</a>
-                                        <div class="product-price">{{$s_product->price}}</div>
-                                        <div class="product-items flexing">
-                                            <div class="product-add btn-action"><i class="fa-solid fa-cart-plus"></i> Add to cart</div>
-                                        </div>
+                                            <p class="product-price">{{$s_product->price}}$</p>
+                                        
+                                            <form wire:submit.prevent ='addcart'>
+                                                @csrf
+                                                <div class="product-items flexing">
+                                                    <button type="submit" 
+                                                            class="btn-action" 
+                                                            {{-- id = "product_{{$product->id}}" --}}
+                                                            wire:click="incrementCartCount({{$s_product->id}})">
+                                                            <span wire:loading.remove wire:target="incrementCartCount({{$s_product->id}})">
+                                                                <i class="fa-solid fa-cart-plus"></i> 
+                                                                Add to cart
+                                                            </span>
+                                                            
+                                                            <span wire:loading wire:target= "incrementCartCount({{$s_product->id}})">
+                                                                Adding to cart ... <i class="fa-solid fa-spinner fa-spin"></i>
+                                                            </span>
+                                                    </button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                             <?php
@@ -236,19 +252,34 @@
                     <section class="products">
                         <?php
                             $nbr_products = 0;
-                            foreach ($featuredcategory->products as $featured_product) {?>
+                            foreach ($featuredcategory->products as $product) {?>
                                 <div class="product">
                                     <span class="product-status">new</span>
-                                    <a href="{{route('details',[$featured_product->slug])}}" class="product-image">
-                                        <img src="{{asset('images/products/'.$featured_product->image)}}" alt="{{$featured_product->name}}" />
+                                    <a href="{{route('details',[$product->slug])}}" class="product-image">
+                                        <img src="{{asset('images/products/'.$product->image)}}" alt="{{$product->name}}" />
                                     </a>
                                     <div class="product-info">
-                                        <a href="{{route('category',[$featured_product->SubCategory->Category->slug,$featured_product->SubCategory->slug])}}" class="product-category">{{$featured_product->SubCategory->subcategory}}</a>
-                                        <a href="{{route('details',[$featured_product->slug])}}" class="product-name">{{$featured_product->name}}</a>
-                                    <div class="product-price">{{$featured_product->price}}</div>
-                                    <div class="product-items flexing">
-                                        <div class="product-add btn-action"><i class="fa-solid fa-cart-plus"></i> Add to cart</div>
-                                    </div>
+                                        <a href="{{route('category',[$product->SubCategory->Category->slug,$product->SubCategory->slug])}}" class="product-category">{{$product->SubCategory->subcategory}}</a>
+                                        <a href="{{route('details',[$product->slug])}}" class="product-name">{{$product->name}}</a>
+                                        <p class="product-price">{{$product->price}}$</p>
+                                        <form wire:submit.prevent ='addcart'>
+                                            @csrf
+                                            <div class="product-items flexing">
+                                                <button type="submit" 
+                                                        class="btn-action" 
+                                                        {{-- id = "product_{{$product->id}}" --}}
+                                                        wire:click="incrementCartCount({{$product->id}})">
+                                                        <span wire:loading.remove wire:target="incrementCartCount({{$product->id}})">
+                                                            <i class="fa-solid fa-cart-plus"></i> 
+                                                            Add to cart
+                                                        </span>
+                                                        
+                                                        <span wire:loading wire:target= "incrementCartCount({{$product->id}})">
+                                                            Adding to cart ... <i class="fa-solid fa-spinner fa-spin"></i>
+                                                        </span>
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                         <?php

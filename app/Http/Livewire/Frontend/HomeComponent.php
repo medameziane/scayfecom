@@ -19,10 +19,11 @@ class HomeComponent extends Component
     public function addcart(){
 
         if(Shopping::where('product_id',$this->product_id)->exists()){
-            $findid                     = Shopping::where('product_id',$this->product_id)->first();
+            $findid                         = Shopping::where('product_id',$this->product_id)->first();
             $getid = $findid->id;
-            $updatequantity             = Shopping::find($getid);
-            $updatequantity->quantity   = $updatequantity->quantity + 1;
+            $updatequantity                 = Shopping::find($getid);
+            $updatequantity->quantity       = $updatequantity->quantity + 1;
+            $updatequantity->subprice       = $updatequantity->quantity * $updatequantity->product->price;
             $updatequantity->save();
             $this->emit('cardupdated');
             $this->emit('hiddencartupdated');
@@ -31,10 +32,11 @@ class HomeComponent extends Component
         }else{
 
             if(Auth::user()){
-                $shop = new Shopping();
+                $shop               = new Shopping();
                 $shop->product_id   = $this->product_id;
                 $shop->user_id      = Auth::user()->id;
                 $shop->quantity     = 1;
+                $shop->subprice     = $shop->quantity * $shop->product->price;
                 $shop->type         = 1;
                 $shop->save();
                 $this->emit('cardupdated');
@@ -44,6 +46,7 @@ class HomeComponent extends Component
                 return redirect()->Route("login");
             }
         }
+        $this->skipRender();
     }
 
     // Add to wishlist

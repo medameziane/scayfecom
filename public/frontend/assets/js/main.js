@@ -35,64 +35,6 @@ if(categories_icon && menus_icon){
 
 
 
-/*--------- Start Calc Quantity ---------*/
-let calctotal = 0
-let subtotals = document.querySelectorAll(".align-middle td .product-sub-price")
-let minus     = document.querySelectorAll(".align-middle td #minus")
-let total     = document.getElementById("total")
-let totalwithshipping     = document.getElementById("totalwithshipping")
-let plus      = document.querySelectorAll(".align-middle td #plus")
-subtotals.forEach(sub=>{
-  calctotal += parseInt(sub.value,10)
-  total.value = calctotal +"$"
-  if(totalwithshipping){
-    totalwithshipping.value = total.value
-  }
-})
-minus.forEach((min)=>{
-  min.onclick = (e)=>{
-
-    let getdata = e.currentTarget.dataset['calc']
-    let getdataqte = e.currentTarget.dataset['qte']
-    let getdproductprice = e.currentTarget.dataset['price']
-
-    let product_sub_price = document.getElementById(getdata)
-
-    if(document.getElementById(getdataqte).value > 1){
-      calctotal -= parseInt(product_sub_price.value,10)
-      document.getElementById(getdataqte).value --
-      let product_qte   = document.getElementById(getdataqte).value
-      let product_price = document.getElementById(getdproductprice).value
-      product_sub_price.value =  `${parseInt(product_qte,10) * parseInt(product_price,10)} $`
-      calctotal += parseInt(product_sub_price.value,10)
-      total.value = calctotal +"$"
-      if(totalwithshipping){
-        totalwithshipping.value = total.value
-      }
-    }
-  }
-})
-plus.forEach((pl)=>{
-  pl.onclick = (e)=>{
-    let getdata = e.currentTarget.dataset['calc']
-    let getdataqte = e.currentTarget.dataset['qte']
-    let product_sub_price = document.getElementById(`${getdata}`)
-    calctotal -= parseInt(product_sub_price.value,10)
-
-    document.getElementById(getdataqte).value ++
-    let product_qte         = document.getElementById(getdataqte).value
-    let product_price       = document.querySelector(`.${getdataqte}`).value
-    product_sub_price.value =  `${parseInt(product_qte,10) * parseInt(product_price,10)} $`
-    
-    calctotal += parseInt(product_sub_price.value,10)
-    total.value = calctotal +"$"
-    if(totalwithshipping){
-      totalwithshipping.value = total.value
-    }
-  }
-})
-
-
 
 /*--------- Start Featured categories ---------*/
 let f_categories = document.querySelectorAll(".featured-header-categories .featured-header-category")
@@ -113,23 +55,6 @@ if(f_categories){
       document.getElementById(e.currentTarget.dataset["cat"]).style.display ='block'
     }
   })
-}
-
-
-
-/*--------- Start Product details ---------*/
-let qte_minus = document.querySelector(".product-details .cart-quantity #minus")
-let qte_plus  = document.querySelector(".product-details .cart-quantity #plus")
-if(qte_minus && qte_plus){
-  qte_minus.addEventListener("click",()=>{
-    if(document.querySelector('.product-quantity').value > 1){
-      document.querySelector('.product-quantity').value --
-    }
-  })
-  
-  qte_plus.onclick = ()=>{
-    document.querySelector('.product-quantity').value ++
-  }
 }
 
 
