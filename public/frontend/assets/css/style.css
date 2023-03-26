@@ -16,7 +16,6 @@ h1,h2,h3,h4,h5,h6,p{
 input{
   outline: none;
 }
-
 :root{
   --main-color    : #0d6efd;
   --hover-color   : #45aaf2;
@@ -27,8 +26,9 @@ input{
   --text-color    : #7f8c8d;
   --border-color  : #dcdde178;
 
+  --alert-notify          : 999999;
   --categoties-menu-index : 99999;
-  --menus-index : 99998;
+  --menus-index           : 99998;
 }
 ul{
   list-style-type: none;
@@ -59,40 +59,8 @@ body{
   z-index: 9999;
   transition: .3s ease-in-out;
 }
-.product-overly{
-  position: fixed;
-  left: 50%;
-  top: 30%;
-  transform: translate(-50%,-50%);
-  background: var(--card-color);
-  width: 400px;
-  box-shadow: 0px 0px 9px 7px rgb(0 0 0 / 18%);
-  height: 180px;
-  gap: 10px;
-  transition: .3s;
-  z-index: 999999;
-  opacity: 0;
-  visibility: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-}
-.product-overly svg {
-  font-size: 60px;
-  color: var(--main-color);
-}
-.product-overly.show{
-  opacity: 1;
-  visibility: visible;
-}
-.product-overly .message {
-  font-size: 20px;
-  text-align: center;
-  font-weight: 600;
-  line-height: 2;
-  color: var(--title-color);
+.alertify-notifier{
+  z-index: var(--alert-notify) !important;
 }
 .wrrapper{
   max-width: 1400px;
@@ -802,6 +770,28 @@ img{
 }
 
 /* Start edit cart page */
+.cardevent {
+  position: fixed;
+  background: red;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  text-align: center;
+  left: 50%;
+  top: 20%;
+  transition: .3s;
+  transform: translateX(-50%);
+  z-index: 999999;
+}
+.cardevent.hide{
+  top: -20%;
+}
+.cardevent p {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.8;
+}
 .cart-section{
   background: var(--card-color);
   padding: 10px 0;
@@ -812,7 +802,7 @@ img{
   width: 120px;
   margin: auto;
 }
-.cart-quantity .c-qa{
+.cart-quantity .quantity{
   font-size: 16px;
   font-weight: 600;
   border: none;
@@ -955,10 +945,15 @@ img{
   margin-bottom: 10px;
 }
 .checkout-section .payment-methods .form-section {
-  margin: 15px 0;
+  margin: 5px 0;
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  border-radius: 10px;
+  background: var(--bg-color);
 }
-.checkout-section .form-section .paypal{
-  width: 200px;
+.checkout-section .form-section img{
+  width: 150px;
+  height: 50px;
   margin: 0 10px;
   cursor: pointer;
 }
@@ -973,11 +968,8 @@ img{
   margin: 10px 0;
   display: none;
 }
-.dblock{
-  display: block !important;
-}
 .checkout-section .checkout-title{
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 500;
   width: fit-content;
   margin: 10px auto;

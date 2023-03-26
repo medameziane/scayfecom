@@ -33,8 +33,11 @@ if(categories_icon && menus_icon){
   }
 }
 
-
-
+// Start events
+window.addEventListener('message', event => {
+  alertify.set('notifier','position', 'top-right');
+  alertify.notify(event.detail.text,event.detail.type);
+})
 
 /*--------- Start Featured categories ---------*/
 let f_categories = document.querySelectorAll(".featured-header-categories .featured-header-category")
@@ -56,7 +59,6 @@ if(f_categories){
     }
   })
 }
-
 
 /*--------- Start checkout ---------*/
 let checkoutform = document.getElementById("checkout-form")
@@ -98,7 +100,7 @@ if(checkoutform || cod){
     }
   }
   cod.onclick = ()=>{
-    document.querySelector(".cod").classList.add("dblock")
+    document.querySelector(".cod").style.display = "block"
   }
 }
 

@@ -1,16 +1,6 @@
 @section("title","Shopping Cart")
 <section class="cart-section">
     <div class="wrrapper">
-        @if (session()->has("deleted"))
-            <div class="alert alert-success">
-                {{session("deleted")}}
-            </div>
-        @endif
-        @if (session()->has("updated"))
-            <div class="alert alert-success">
-                {{session("updated")}}
-            </div>
-        @endif
         <div class="row">
             <div class="col-sm-6">
                 <a href="/" class="btn text-muted d-none d-sm-inline-block btn-link fw-semibold">
@@ -18,7 +8,6 @@
             </div>
         </div>
         <div class="row">
-            <!-- <form method="post" id="form-cart"> -->
             <div class="col-lg-8">
                 <table class="table table-borderless table-nowrap table-centered table-bordered">
                     <thead class="table-light text-center">
@@ -46,13 +35,19 @@
                                     <div class="cart-quantity flexing">
 
                                         {{-- Button minus quantity --}}
-                                        <button class ="c-qa minus"  wire:click = "minus({{$cart->product->id}})">-</button>
+                                        <button class ="quantity"  wire:click = "minus({{$cart->product->id}})">-</button>
 
                                         {{-- Quantity area --}}
-                                        <span class="product-quantity">{{$cart->quantity}}</span>
+                                        <span wire:loading.remove>
+                                            <span class="product-quantity">{{$cart->quantity}}</span>
+                                        </span>
+
+                                        <span wire:loading>
+                                            <span class="product-quantity"><i class="fa-solid fa-spinner fa-spin"></i></span>
+                                        </span>
 
                                         {{-- Button plus quantity --}}
-                                        <button class = "c-qa plus" wire:click = "plus({{$cart->product->id}})">+</button>
+                                        <button class = "quantity" wire:click = "plus({{$cart->product->id}})">+</button>
 
                                     </div>
                                 </td>
@@ -66,6 +61,7 @@
                                         <span wire:loading.remove wire:target="delete({{$cart->id}})">
                                             <i class="fa-solid fa-trash"></i> Remove
                                         </span>
+
                                         <span wire:loading wire:target= "delete({{$cart->id}})">
                                             Removing ... <i class="fa-solid fa-spinner fa-spin"></i>
                                         </span>
@@ -80,7 +76,6 @@
             <div class="col-lg-4">
                 <livewire:frontend.cart-summary-component />
             </div>
-            <!-- </form> -->
         </div>
     </div>
 </section>

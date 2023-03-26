@@ -1,4 +1,4 @@
-<!-- Start checkout -->
+@section("title","Checkout Cart")
 <section class="checkout-section">
     <div class="wrrapper">
         <div class="row">
@@ -53,27 +53,6 @@
 
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <!-- Shopping informations -->
-                    <div class="checkout-details">
-                        <p class="checkout-title">Shopping Summary</p>
-                        <div class="checkout-items">
-                            <div class="checkout-item flexing">
-                                <p class="check-name">Total</p>
-                                <p class="check-value"><input type="text" value="150$" id="total" class="cart-price" disabled/></p>
-                            </div>
-                            <div class="checkout-item flexing">
-                                <p class="check-name">Shipping</p>
-                                <p class="check-value">Free shipping</p>
-                            </div>
-                            <div class="checkout-item flexing">
-                                <p class="check-name">Total + Shipping</p>
-                                <p class="check-value"><input type="text" value="250$" id="totalwithshipping" class="cart-price" disabled/></p>
-                            </div>
-                        </div>
-                    </div>
 
                     <!-- Payments methods -->
                     <div class="payment-methods">
@@ -83,7 +62,8 @@
                         <div class="form-section">
                             <input type="radio" name="payment-method" id="cards-payment">
                             <label for="cards-payment" class="f-label">
-                                <img src="{{asset('frontend/assets/imgs/icons/cards-payment.png')}}" class="paypal">
+                                <img src="{{asset('frontend/assets/imgs/icons/cards-payment.png')}}" class="cards-payment">
+                                <p class="checkout-method-info cards-payment">Will be redirect</p>
                             </label>
                         </div>
 
@@ -92,22 +72,44 @@
                             <label for="paypal" class="f-label">
                                 <img src="{{asset('frontend/assets/imgs/icons/paypal.png')}}" class="paypal">
                             </label>
+                            <p class="checkout-method-info paypal">Will be redirect</p>
                         </div>
 
                         <div class="form-section">
                             <input type="radio" value="cod" name="payment-method" id="cod">
                             <label for="cod" class="f-label">Cash on delivery</label>
-                            <div class="checkout-method-info cod">Pay with cash upon delivery.</div>
+                            <p class="checkout-method-info cod">Pay with cash upon delivery.</p>
                         </div>
 
                         <div class="form-section">
                             <input type="checkbox" id="terms">
                             <label for="terms" class="f-label terms d-inline">I have read and agree to the website 
-                                <a href="#"><b style="text-decoration: underline;">terms and conditions</b></a>
+                                <a href="#"><b style="text-decoration: underline">terms and conditions</b></a>
                             </label>
                         </div>
 
                         <input type="submit" value="Place Order" class="btn-action w-100 py-2">
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <!-- Shopping informations -->
+                    <div class="checkout-details">
+                        <p class="checkout-title">Shopping Summary</p>
+                        <div class="checkout-items">
+                            <div class="checkout-item flexing">
+                                <p class="check-name">Total</p>
+                                <p class="check-value">{{$checkouts}}$</p>
+                            </div>
+                            <div class="checkout-item flexing">
+                                <p class="check-name">Shipping</p>
+                                <p class="check-value">Free shipping</p>
+                            </div>
+                            <div class="checkout-item flexing">
+                                <p class="check-name">Total + Shipping</p>
+                                <p class="check-value">{{$checkouts}}$</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

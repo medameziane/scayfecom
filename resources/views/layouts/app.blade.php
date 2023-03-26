@@ -10,6 +10,10 @@
     <link rel='stylesheet' type='text/css' href="{{asset('frontend/assets/css/style.css')}}">
     {{-- <link rel="stylesheet" href="{{asset('frontend/assets/css/fontowsome.min.css')}}"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
     @livewireStyles
   </head>
   <body>
@@ -149,9 +153,11 @@
       </div>
     </footer>
     
-    @livewireScripts
+    <!-- JavaScript -->
     <script src="{{asset('frontend/assets/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('frontend/assets/js/main.js')}}"></script>
     <script src="{{asset('frontend/assets/js/fontowsome.min.js')}}"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    @livewireScripts
   </body>
 </html>

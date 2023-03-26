@@ -24,7 +24,11 @@ class CartComponent extends Component
         $this->emit('cardupdated');
         $this->emit('hiddencartupdated');
         $this->emit("totalPrices");
-        session()->flash('updated', "the item has been updated successfully");
+        $this->dispatchBrowserEvent('message', [
+            'text'  =>  "The quantity has been updated successfully",
+            'type'  =>  "success",
+            ]
+        );
     }
 
     public function minus($product_id){
@@ -36,12 +40,22 @@ class CartComponent extends Component
         if($updatequantity->quantity < 1){
             $updatequantity->quantity   = 1;
             $updatequantity->subprice   = $updatequantity->quantity * $updatequantity->product->price;
+            $this->dispatchBrowserEvent('message', [
+                'text'  =>  "The quantity must be one or more",
+                'type'  =>  "warning",
+                ]
+            );
+        }else{
+            $this->dispatchBrowserEvent('message', [
+                'text'  =>  "The quantity has been updated successfully",
+                'type'  =>  "success",
+                ]
+            );
         }
         $updatequantity->save();
         $this->emit('cardupdated');
         $this->emit('hiddencartupdated');
         $this->emit("totalPrices");
-        session()->flash('updated', "the item has been updated successfully");
     }
 
     public function delete($id){
@@ -49,7 +63,11 @@ class CartComponent extends Component
         $this->emit('cardupdated');
         $this->emit('hiddencartupdated');
         $this->emit("totalPrices");
-        session()->flash('deleted', "the item has been removed successfully");
+        $this->dispatchBrowserEvent('message', [
+            'text'  => "The item has been removed successfully",
+            'type'  =>'error',
+            ]
+        );
     }
     
     public function render()

@@ -8,9 +8,17 @@
             </tr>
             <tr>
                 <td>Total :</td>
-                <td><span>{{$totalprices}}$</span></td>
+                <td>
+                    <span wire:loading.remove>
+                        <span>{{$totalprices}}$</span>
+                    </span>
+
+                    <span wire:loading>
+                        Updating total ... <i class="fa-solid fa-spinner fa-spin"></i>
+                    </span>
+                </td>
             </tr>
         </tbody>
     </table>
-    <a href="{{route('checkout')}}" class="btn-action w-100">Proceed To Checkout</a>
+    <a href="{{route('checkout')}}" class="btn-action py-2 w-100">Proceed To Checkout</a>
 </div>

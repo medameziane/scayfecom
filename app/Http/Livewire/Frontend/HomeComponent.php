@@ -27,7 +27,11 @@ class HomeComponent extends Component
             $updatequantity->save();
             $this->emit('cardupdated');
             $this->emit('hiddencartupdated');
-            session()->flash('message', "Already Added to cart");
+            $this->dispatchBrowserEvent('message', [
+                'text'  => "The product already added",
+                'type'  =>'warning',
+                ]
+            );
             
         }else{
 
@@ -41,7 +45,11 @@ class HomeComponent extends Component
                 $shop->save();
                 $this->emit('cardupdated');
                 $this->emit('hiddencartupdated');
-                session()->flash('message', "Your product has been added successfully");
+                $this->dispatchBrowserEvent('message', [
+                    'text'  =>  "The product has been added successfully",
+                    'type'  =>  'success',
+                    ]
+                );
             }else{
                 return redirect()->Route("login");
             }
