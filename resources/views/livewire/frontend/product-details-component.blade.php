@@ -12,10 +12,12 @@
                             <div class="p-details-name">{{$product->name}}</div>
                             <div class="p-details-item">
                                 <span class="p-item">Category:</span>
-                                <a [href="{{route('category',[$product->SubCategory->Category->slug,$product->SubCategory->slug])}}" class="product-category">{{$product->SubCategory->subcategory}}</a>
+                                <a href="{{route('subcategory',[$product->SubCategory->Category->slug,$product->SubCategory->slug])}}" class="product-category">
+                                    {{$product->SubCategory->subcategory}}
+                                </a>
                             </div>
                             <div class="p-details-item">
-                                <span class="p-item">Stock:</span>
+                                <span class="p-item">Availability:</span>
                                 <span class="item-info">In Stock</span>
                             </div>
                             <div class="p-details-item">
@@ -26,25 +28,53 @@
                                 <span class="p-item">Price:</span>
                                 <span class="product-price">{{$product->price}} $</span>
                             </div>
-                            <!-- <form action="/" method="post"> -->
-                                <div class="p-details-item">
-                                <span class="p-item">Select Quantity</span>
-                                <div class="product-info">
-                                    <div class="cart-quantity">
-                                    <button class="c-qa minus" id="minus" data-calc = "calc5" data-qte ='qte5'>-</button>
-                                    <input type="number" name="product-quantity" min="1" value="1" class="product-quantity" disabled/>
-                                    <button class="c-qa plus" id="plus" data-calc ="calc5" data-qte ='qte5'>+</button>
-                                    </div>
+                            <div class="p-details-item">
+                                <span class="p-item">Quantity:</span>
+                                <div class="cart-quantity flexing mx-0">
+
+                                    {{-- Button minus quantity --}}
+                                    <button class ="quantity"  wire:click = "minus({{$product->id}})">-</button>
+
+                                    {{-- Quantity area --}}
+                                    <span wire:loading.remove>
+                                        <input type="text" class="quantity inputquantity" min="1" wire:model="quantity"/>
+                                    </span>
+
+                                    <span wire:loading>
+                                        <span class="quantity"><i class="fa-solid fa-spinner fa-spin"></i></span>
+                                    </span>
+
+                                    {{-- Button plus quantity --}}
+                                    <button class = "quantity" wire:click = "plus({{$product->id}})">+</button>
+
                                 </div>
+                            </div>
+                            <div class="p-details-item">
+                                <div class="btn-action w-50 py-2" wire:click="addcart({{$product->id}})">
+                                    <span wire:loading.remove wire:target="addcart({{$product->id}})">
+                                        <i class="fa-solid fa-cart-plus"></i> 
+                                        Add to cart
+                                    </span>
+                                    
+                                    <span wire:loading wire:target= "addcart({{$product->id}})">
+                                        Adding to cart ... <i class="fa-solid fa-spinner fa-spin"></i>
+                                    </span>
                                 </div>
-                                <div class="p-details-actions">
-                                <button type="submit" class="p-details-shop btn btn-primary">Buy now</button>
-                                <button class="p-details-shop btn btn-success">Add to cart</button>
+
+                                <div class="btn-action bg-success w-50 py-2" wire:click="addcart({{$product->id}})">
+                                    <span wire:loading.remove wire:target="addcart({{$product->id}})">
+                                        <i class="fa-solid fa-cart-plus"></i> 
+                                        Buy Now
+                                    </span>
+                                    
+                                    <span wire:loading wire:target= "addcart({{$product->id}})">
+                                        Adding to cart ... <i class="fa-solid fa-spinner fa-spin"></i>
+                                    </span>
                                 </div>
-                            <!-- </form> -->
+                            </div>
                         </div>
                     </div>
-                    <div class="more-product">
+                    <div class="more-product my-3">
                         <div class="m-details-title">Description</div>
                         <p class="more-details-description">{{$product->description}}</p>
                     </div>
@@ -61,11 +91,20 @@
                                     <img src="{{asset('images/products/'.$product->image)}}" alt="{{$product->name}}" />
                                 </a>
                                 <div class="product-info">
-                                    <a href="{{route('category',[$product->SubCategory->Category->slug,$product->SubCategory->slug])}}" class="product-category">{{$product->SubCategory->subcategory}}</a>
+                                    <a href="{{route('subcategory',[$product->SubCategory->Category->slug,$product->SubCategory->slug])}}" class="product-category">{{$product->SubCategory->subcategory}}</a>
                                     <a href="{{route('details',[$product->slug])}}" class="product-name">{{$product->name}}</a>
-                                <div class="product-price">{{$product->price}}</div>
+                                <p class="product-price">{{$product->price}}$</p>
                                 <div class="product-items flexing">
-                                    <div class="product-add btn-action"><i class="fa-solid fa-cart-plus"></i> Add to cart</div>
+                                    <div class="btn-action" wire:click="addcart({{$product->id}})">
+                                        <span wire:loading.remove wire:target="addcart({{$product->id}})">
+                                            <i class="fa-solid fa-cart-plus"></i> 
+                                            Add to cart
+                                        </span>
+                                        
+                                        <span wire:loading wire:target= "addcart({{$product->id}})">
+                                            Adding to cart ... <i class="fa-solid fa-spinner fa-spin"></i>
+                                        </span>
+                                    </div>
                                 </div>
                                 </div>
                             </div>
@@ -76,88 +115,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <aside class="sidebar">
-            <div class="sidebar-content">
-                <div class="sidebar-item">
-                <div class="sidebar-title">Latest Products</div>
-                <div class="sidebar-latest-products">
-                    <a href="#" class="product-image">
-                    <img src="https://themepanthers.com/wp/nest/d1/wp-content/uploads/2022/03/banner-5-min.png">
-                    </a>
-                    <div class="product-info">
-                    <a href="#" class="product-name">Iphone 14 pro max</a>
-                    <div class="product-price">2500 $</div>
-                    </div>
-                </div>
-                <div class="sidebar-latest-products">
-                    <a href="#" class="product-image">
-                    <img src="https://themepanthers.com/wp/nest/d1/wp-content/uploads/2022/03/banner-5-min.png">
-                    </a>
-                    <div class="product-info">
-                    <a href="#" class="product-name">Iphone 14 pro max</a>
-                    <div class="product-price">2500 $</div>
-                    </div>
-                </div>
-                <div class="sidebar-latest-products">
-                    <a href="#" class="product-image">
-                    <img src="https://themepanthers.com/wp/nest/d1/wp-content/uploads/2022/03/banner-5-min.png">
-                    </a>
-                    <div class="product-info">
-                    <a href="#" class="product-name">Iphone 14 pro max</a>
-                    <div class="product-price">2500 $</div>
-                    </div>
-                </div>
-                <div class="sidebar-latest-products">
-                    <a href="#" class="product-image">
-                    <img src="https://themepanthers.com/wp/nest/d1/wp-content/uploads/2022/03/banner-5-min.png">
-                    </a>
-                    <div class="product-info">
-                    <a href="#" class="product-name">Iphone 14 pro max</a>
-                    <div class="product-price">2500 $</div>
-                    </div>
-                </div>
-                </div>
-                <div class="sidebar-item">
-                <div class="sidebar-title">New Products</div>
-                <div class="sidebar-latest-products">
-                    <a href="#" class="product-image">
-                    <img src="https://themepanthers.com/wp/nest/d1/wp-content/uploads/2022/03/banner-5-min.png">
-                    </a>
-                    <div class="product-info">
-                    <a href="#" class="product-name">Iphone 14 pro max</a>
-                    <div class="product-price">2500 $</div>
-                    </div>
-                </div>
-                <div class="sidebar-latest-products">
-                    <a href="#" class="product-image">
-                    <img src="https://themepanthers.com/wp/nest/d1/wp-content/uploads/2022/03/banner-5-min.png">
-                    </a>
-                    <div class="product-info">
-                    <a href="#" class="product-name">Iphone 14 pro max</a>
-                    <div class="product-price">2500 $</div>
-                    </div>
-                </div>
-                <div class="sidebar-latest-products">
-                    <a href="#" class="product-image">
-                    <img src="https://themepanthers.com/wp/nest/d1/wp-content/uploads/2022/03/banner-5-min.png">
-                    </a>
-                    <div class="product-info">
-                    <a href="#" class="product-name">Iphone 14 pro max</a>
-                    <div class="product-price">2500 $</div>
-                    </div>
-                </div>
-                <div class="sidebar-latest-products">
-                    <a href="#" class="product-image">
-                    <img src="https://themepanthers.com/wp/nest/d1/wp-content/uploads/2022/03/banner-5-min.png">
-                    </a>
-                    <div class="product-info">
-                    <a href="#" class="product-name">Iphone 14 pro max</a>
-                    <div class="product-price">2500 $</div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </aside> -->
         </main>
     </div>
 </div>

@@ -7,7 +7,7 @@
     <div class="sub-categories">
     <h3 class="sub-category-title">{{$category->category}}</h3>
     @foreach ($category->SubCategory as $SubCategory)
-        <a href="{{route('category',[$category->slug,$SubCategory->slug])}}" class="sub-category-item flexing">{{$SubCategory->subcategory}}</a>
+        <a href="{{route('subcategory',[$category->slug,$SubCategory->slug])}}" class="sub-category-item flexing">{{$SubCategory->subcategory}}</a>
     @endforeach
     </div>
 </div>

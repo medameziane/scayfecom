@@ -39,27 +39,20 @@
                         <img src="{{asset('images/products/'.$product->image)}}" alt="{{$product->name}}" />
                     </a>
                     <div class="product-info">
-                        <a href="{{route('category',[$product->SubCategory->Category->slug,$product->SubCategory->slug])}}" class="product-category">{{$product->SubCategory->subcategory}}</a>
+                        <a href="{{route('subcategory',[$product->SubCategory->Category->slug,$product->SubCategory->slug])}}" class="product-category">{{$product->SubCategory->subcategory}}</a>
                         <a href="{{route('details',[$product->slug])}}" class="product-name">{{$product->name}}</a>
                         <p class="product-price">{{$product->price}}$</p>
-                        <form wire:submit.prevent ='addcart'>
-                            @csrf
-                            <div class="product-items flexing">
-                                <button type="submit" 
-                                        class="btn-action" 
-                                        {{-- id = "product_{{$product->id}}" --}}
-                                        wire:click="incrementCartCount({{$product->id}})">
-                                        <span wire:loading.remove wire:target="incrementCartCount({{$product->id}})">
-                                            <i class="fa-solid fa-cart-plus"></i> 
-                                            Add to cart
-                                        </span>
-                                        
-                                        <span wire:loading wire:target= "incrementCartCount({{$product->id}})">
-                                            Adding to cart ... <i class="fa-solid fa-spinner fa-spin"></i>
-                                        </span>
-                                </button>
+                        <div class="product-items flexing">
+                            <div class="btn-action" wire:click="addcart({{$product->id}})">
+                                <span wire:loading.remove wire:target="addcart({{$product->id}})">
+                                    <i class="fa-solid fa-cart-plus"></i> Add to cart
+                                </span>
+                                
+                                <span wire:loading wire:target= "addcart({{$product->id}})">
+                                    Adding to cart ... <i class="fa-solid fa-spinner fa-spin"></i>
+                                </span>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             @endforeach
@@ -94,7 +87,7 @@
                         <img src="{{asset('images/products/'.$productlatestWeek->image)}}" />
                     </a>
                     <div class="product-info">
-                        <a href="{{route('category',[$productlatestWeek->SubCategory->Category->slug,$productlatestWeek->SubCategory->slug])}}" class="product-category">{{$productlatestWeek->SubCategory->subcategory}}</a>
+                        <a href="{{route('subcategory',[$productlatestWeek->SubCategory->Category->slug,$productlatestWeek->SubCategory->slug])}}" class="product-category">{{$productlatestWeek->SubCategory->subcategory}}</a>
                         <a href="{{route('details',[$productlatestWeek->slug])}}" class="product-name">{{$productlatestWeek->name}}</a>
                         <p class="product-price">{{$productlatestWeek->price}}$</p>
                         <span class="available">Available:  <span class="in-stock">{{$productlatestWeek->quantity}}</span> In stock</span>
@@ -192,35 +185,28 @@
                         <section class="products">
                             <?php 
                                 $nbr_products = 0;
-                                foreach ($single->products as $s_product) {?>
+                                foreach ($single->products as $product) {?>
                                     <div class="product">
                                         <span class="product-status">new</span>
-                                        <a href="{{route('details',[$s_product->slug])}}" class="product-image">
-                                            <img src="{{asset('images/products/'.$s_product->image)}}" alt="{{$s_product->name}}" />
+                                        <a href="{{route('details',[$product->slug])}}" class="product-image">
+                                            <img src="{{asset('images/products/'.$product->image)}}" alt="{{$product->name}}" />
                                         </a>
                                         <div class="product-info">
-                                            <a href="{{route('category',[$s_product->SubCategory->Category->slug,$s_product->SubCategory->slug])}}" class="product-category">{{$s_product->SubCategory->subcategory}}</a>
-                                            <a href="{{route('details',[$s_product->slug])}}" class="product-name">{{$s_product->name}}</a>
-                                            <p class="product-price">{{$s_product->price}}$</p>
+                                            <a href="{{route('subcategory',[$product->SubCategory->Category->slug,$product->SubCategory->slug])}}" class="product-category">{{$product->SubCategory->subcategory}}</a>
+                                            <a href="{{route('details',[$product->slug])}}" class="product-name">{{$product->name}}</a>
+                                            <p class="product-price">{{$product->price}}$</p>
                                         
-                                            <form wire:submit.prevent ='addcart'>
-                                                @csrf
-                                                <div class="product-items flexing">
-                                                    <button type="submit" 
-                                                            class="btn-action" 
-                                                            {{-- id = "product_{{$product->id}}" --}}
-                                                            wire:click="incrementCartCount({{$s_product->id}})">
-                                                            <span wire:loading.remove wire:target="incrementCartCount({{$s_product->id}})">
-                                                                <i class="fa-solid fa-cart-plus"></i> 
-                                                                Add to cart
-                                                            </span>
-                                                            
-                                                            <span wire:loading wire:target= "incrementCartCount({{$s_product->id}})">
-                                                                Adding to cart ... <i class="fa-solid fa-spinner fa-spin"></i>
-                                                            </span>
-                                                    </button>
+                                            <div class="product-items flexing">
+                                                <div class="btn-action" wire:click="addcart({{$product->id}})">
+                                                    <span wire:loading.remove wire:target="addcart({{$product->id}})">
+                                                        <i class="fa-solid fa-cart-plus"></i> Add to cart
+                                                    </span>
+                                                    
+                                                    <span wire:loading wire:target= "addcart({{$product->id}})">
+                                                        Adding to cart ... <i class="fa-solid fa-spinner fa-spin"></i>
+                                                    </span>
                                                 </div>
-                                            </form>
+                                            </div>
                                         </div>
                                     </div>
                             <?php
@@ -259,27 +245,20 @@
                                         <img src="{{asset('images/products/'.$product->image)}}" alt="{{$product->name}}" />
                                     </a>
                                     <div class="product-info">
-                                        <a href="{{route('category',[$product->SubCategory->Category->slug,$product->SubCategory->slug])}}" class="product-category">{{$product->SubCategory->subcategory}}</a>
+                                        <a href="{{route('subcategory',[$product->SubCategory->Category->slug,$product->SubCategory->slug])}}" class="product-category">{{$product->SubCategory->subcategory}}</a>
                                         <a href="{{route('details',[$product->slug])}}" class="product-name">{{$product->name}}</a>
                                         <p class="product-price">{{$product->price}}$</p>
-                                        <form wire:submit.prevent ='addcart'>
-                                            @csrf
-                                            <div class="product-items flexing">
-                                                <button type="submit" 
-                                                        class="btn-action" 
-                                                        {{-- id = "product_{{$product->id}}" --}}
-                                                        wire:click="incrementCartCount({{$product->id}})">
-                                                        <span wire:loading.remove wire:target="incrementCartCount({{$product->id}})">
-                                                            <i class="fa-solid fa-cart-plus"></i> 
-                                                            Add to cart
-                                                        </span>
-                                                        
-                                                        <span wire:loading wire:target= "incrementCartCount({{$product->id}})">
-                                                            Adding to cart ... <i class="fa-solid fa-spinner fa-spin"></i>
-                                                        </span>
-                                                </button>
+                                        <div class="product-items flexing">
+                                            <div class="btn-action" wire:click="addcart({{$product->id}})">
+                                                <span wire:loading.remove wire:target="addcart({{$product->id}})">
+                                                    <i class="fa-solid fa-cart-plus"></i> Add to cart
+                                                </span>
+                                                
+                                                <span wire:loading wire:target= "addcart({{$product->id}})">
+                                                    Adding to cart ... <i class="fa-solid fa-spinner fa-spin"></i>
+                                                </span>
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
                         <?php

@@ -27,6 +27,7 @@ use App\Http\Livewire\Frontend\CartComponent;
 use App\Http\Livewire\Frontend\WishlistComponent;
 use App\Http\Livewire\Frontend\CheckoutComponent;
 use App\Http\Livewire\Frontend\SingleCategoryComponent;
+use App\Http\Livewire\Frontend\SingleSubCategoryComponent;
 use App\Http\Livewire\Frontend\ShopComponent;
 
 
@@ -69,7 +70,8 @@ Route::middleware("auth")->group(function(){
 });
 Route::get('/', HomeComponent::class)->name("home");
 Route::get('/details/{slug}',ProductDetailsComponent::class)->name("details");
-Route::get('/category/{category_name?}/{subcategory_name?}',SingleCategoryComponent::class)->name("category");
+Route::get('/category/{category_name?}',SingleCategoryComponent::class)->name("category");
+Route::get('/category/{category_name?}/{subcategory_name?}',SingleSubCategoryComponent::class)->name("subcategory");
 
 // Redirect to homepage if the page target does not exist
 // Route::any('{query}',function() { return redirect('/'); })->where('query', '.*');

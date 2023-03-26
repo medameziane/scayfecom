@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('product_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->decimal("subprice",8,2);
+            $table->float("quantity");
             $table->integer('type')->comment("1 for cart and 0 for wishlist");
             $table->timestamps();
         });
