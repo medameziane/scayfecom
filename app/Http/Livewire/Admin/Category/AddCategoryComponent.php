@@ -32,7 +32,7 @@ class AddCategoryComponent extends Component
         $category                  =  new Category();
         $category->category        =  $this->category;
         $category->slug            =  $this->slug;
-        $category->image           =  $this->image;
+        $category->image           =  $imageName;
         $category->save();
 
         $this->image->storeAs("categories",$imageName);
