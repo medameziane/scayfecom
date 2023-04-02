@@ -64,7 +64,6 @@ class ProductDetailsComponent extends Component
                     'type'  =>'warning',
                     ]
                 );
-                
             }else{
                 $shop               = new Shopping();
                 $shop->product_id   = $product_id;
@@ -84,11 +83,9 @@ class ProductDetailsComponent extends Component
         }else{
             return redirect()->Route("login");
         }
-        $this->skipRender();
     }
     
-    public function render()
-    {
+    public function render(){
         $productdetails     = Product::where('slug',$this->slug)->get();
         $subcategory        = SubCategory::where("id",$productdetails[0]->sub_category_id)->get();
         $category           = Category::where("id",$subcategory[0]->category_id)->get();

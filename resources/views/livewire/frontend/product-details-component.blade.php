@@ -36,17 +36,16 @@
                                     <button class ="quantity"  wire:click = "minus({{$product->id}})">-</button>
 
                                     {{-- Quantity area --}}
-                                    <span wire:loading.remove>
+                                    <span wire:loading.remove wire:target="plus, minus">
                                         <input type="text" class="quantity inputquantity" min="1" wire:model="quantity"/>
                                     </span>
 
-                                    <span wire:loading>
+                                    <span wire:loading wire:target="plus, minus">
                                         <span class="quantity"><i class="fa-solid fa-spinner fa-spin"></i></span>
                                     </span>
 
                                     {{-- Button plus quantity --}}
                                     <button class = "quantity" wire:click = "plus({{$product->id}})">+</button>
-
                                 </div>
                             </div>
                             <div class="p-details-item">
