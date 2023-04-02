@@ -21,7 +21,7 @@
                         <b>Quantity:</b> {{$cart->quantity}}
                     @endif
                     </p>
-                    <p class="cart-hidden-price"><b>SubTotal:</b> {{$cart->product->price}}$</p>
+                    <p class="cart-hidden-price"><b>SubTotal:</b> {{$cart->subprice}}$</p>
                 </div>
                 </div>
             @endforeach

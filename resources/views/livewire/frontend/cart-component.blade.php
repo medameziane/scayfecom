@@ -35,19 +35,21 @@
                                     <div class="cart-quantity flexing">
 
                                         {{-- Button minus quantity --}}
-                                        <button class ="quantity"  wire:click = "minus({{$cart->product->id}})">-</button>
+                                        <button class="quantity" wire:click="minus({{$cart->product->id}})">-</button>
 
                                         {{-- Quantity area --}}
-                                        <span wire:loading.remove>
+                                        <div wire:loading.remove wire:target="plus({{$cart->product->id}})">
                                             <span class="product-quantity">{{$cart->quantity}}</span>
-                                        </span>
-
-                                        <span wire:loading>
+                                        </div>
+                                        <div wire:loading wire:target="plus({{$cart->product->id}})">
                                             <span class="product-quantity"><i class="fa-solid fa-spinner fa-spin"></i></span>
-                                        </span>
+                                        </div>
+                                        <div wire:loading wire:target="minus({{$cart->product->id}})">
+                                            <span class="product-quantity"><i class="fa-solid fa-spinner fa-spin"></i></span>
+                                        </div>
 
                                         {{-- Button plus quantity --}}
-                                        <button class = "quantity" wire:click = "plus({{$cart->product->id}})">+</button>
+                                        <button class="quantity" wire:click="plus({{$cart->product->id}})">+</button>
 
                                     </div>
                                 </td>
@@ -62,7 +64,7 @@
                                             <i class="fa-solid fa-trash"></i> Remove
                                         </span>
 
-                                        <span wire:loading wire:target= "delete({{$cart->id}})">
+                                        <span wire:loading wire:target="delete({{$cart->id}})">
                                             Removing ... <i class="fa-solid fa-spinner fa-spin"></i>
                                         </span>
                                     </button>

@@ -64,14 +64,16 @@
         <h2 class="sidebar-title-daily">Popular categories</h2>
         <section class="popular-categories">
             <div class="categories" id="categories">
-                @foreach ($limitcategories as $category)
-                    <div class="category">
-                        <a href="{{route('category',[$category->slug])}}" class="category-image">
-                            <img src="{{asset('images/products/'.$category->image)}}">
-                        </a>
-                        <a href="{{route('category',[$category->slug])}}" class="category-title">{{$category->category}}</a>
-                        <p class="product-count">{{count($category->products)}} Products</p>
-                    </div>
+                @foreach ($popularcategories as $category)
+                    @if (count($category->SubCategory)>0)
+                        <div class="category">
+                            <a href="{{route('category',[$category->slug])}}" class="category-image">
+                                <img src="{{asset('images/products/'.$category->image)}}">
+                            </a>
+                            <a href="{{route('category',[$category->slug])}}" class="category-title">{{$category->category}}</a>
+                            <p class="product-count">{{count($category->products)}} Products</p>
+                        </div>
+                    @endif
                 @endforeach
             </div>
         </section>   
@@ -90,7 +92,11 @@
                         <a href="{{route('subcategory',[$productlatestWeek->SubCategory->Category->slug,$productlatestWeek->SubCategory->slug])}}" class="product-category">{{$productlatestWeek->SubCategory->subcategory}}</a>
                         <a href="{{route('details',[$productlatestWeek->slug])}}" class="product-name">{{$productlatestWeek->name}}</a>
                         <p class="product-price">{{$productlatestWeek->price}}$</p>
-                        <span class="available">Available:  <span class="in-stock">{{$productlatestWeek->quantity}}</span> In stock</span>
+                        @if ($productlatestWeek->quantity<10)
+                            <span class="available">Available <strong style="color:red">Only </strong>:  <span class="in-stock">{{$productlatestWeek->quantity}}</span> In stock</span>
+                        @else
+                            <span class="available">Available:  <span class="in-stock">{{$productlatestWeek->quantity}}</span> In stock</span>
+                        @endif
                     </div>
                 </div>
             @endforeach
@@ -166,59 +172,62 @@
     </div>
 
     <!-- Start single category -->
-    <div class="wrrapper-conrtainer">
-        <section class="single-categories">
-            @foreach ($singleCategory as $single)
-                <div class="single-category row mb-2">
-                    <div class="single-category-brand col-lg-3">
-                        <div class="single-category-info">
-                            <h2 class="single-category-title"><b>{{$single->category}}</b></h2>
-                            <a href="{{route('category',[$single->category])}}" class="btn-action">Shop now</a>
+    @if (count($singleCategory[0]->SubCategory)>0)
+        <div class="wrrapper-conrtainer">
+            <section class="single-categories">
+                @foreach ($singleCategory as $single)
+
+                    <div class="single-category row mb-2">
+                        <div class="single-category-brand col-lg-3">
+                            <div class="single-category-info">
+                                <h2 class="single-category-title"><b>{{$single->category}}</b></h2>
+                                <a href="{{route('category',[$single->category])}}" class="btn-action">Shop now</a>
+                            </div>
+                            <div class="single-category-image"><img src="{{asset('images/products/'.$single->image)}}"></div>
                         </div>
-                        <div class="single-category-image"><img src="{{asset('images/products/'.$single->image)}}"></div>
-                    </div>
-                    <div class="single-category-products col-lg-9">
-                        <div class="section-header flexing">
-                            <h2 class="section-title">Shop best <b>{{$single->category}}</b> now</h2>
-                            <a href="{{route('category',[$single->category])}}" class="section-link btn-action">View more</a>
-                        </div>
-                        <section class="products">
-                            <?php 
-                                $nbr_products = 0;
-                                foreach ($single->products as $product) {?>
-                                    <div class="product">
-                                        <span class="product-status">new</span>
-                                        <a href="{{route('details',[$product->slug])}}" class="product-image">
-                                            <img src="{{asset('images/products/'.$product->image)}}" alt="{{$product->name}}" />
-                                        </a>
-                                        <div class="product-info">
-                                            <a href="{{route('subcategory',[$product->SubCategory->Category->slug,$product->SubCategory->slug])}}" class="product-category">{{$product->SubCategory->subcategory}}</a>
-                                            <a href="{{route('details',[$product->slug])}}" class="product-name">{{$product->name}}</a>
-                                            <p class="product-price">{{$product->price}}$</p>
-                                        
-                                            <div class="product-items flexing">
-                                                <div class="btn-action" wire:click="addcart({{$product->id}})">
-                                                    <span wire:loading.remove wire:target="addcart({{$product->id}})">
-                                                        <i class="fa-solid fa-cart-plus"></i> Add to cart
-                                                    </span>
-                                                    
-                                                    <span wire:loading wire:target= "addcart({{$product->id}})">
-                                                        Adding to cart ... <i class="fa-solid fa-spinner fa-spin"></i>
-                                                    </span>
+                        <div class="single-category-products col-lg-9">
+                            <div class="section-header flexing">
+                                <h2 class="section-title">Shop best <b>{{$single->category}}</b> now</h2>
+                                <a href="{{route('category',[$single->category])}}" class="section-link btn-action">View more</a>
+                            </div>
+                            <section class="products">
+                                <?php 
+                                    $nbr_products = 0;
+                                    foreach ($single->products as $product) {?>
+                                        <div class="product">
+                                            <span class="product-status">new</span>
+                                            <a href="{{route('details',[$product->slug])}}" class="product-image">
+                                                <img src="{{asset('images/products/'.$product->image)}}" alt="{{$product->name}}" />
+                                            </a>
+                                            <div class="product-info">
+                                                <a href="{{route('subcategory',[$product->SubCategory->Category->slug,$product->SubCategory->slug])}}" class="product-category">{{$product->SubCategory->subcategory}}</a>
+                                                <a href="{{route('details',[$product->slug])}}" class="product-name">{{$product->name}}</a>
+                                                <p class="product-price">{{$product->price}}$</p>
+                                            
+                                                <div class="product-items flexing">
+                                                    <div class="btn-action" wire:click="addcart({{$product->id}})">
+                                                        <span wire:loading.remove wire:target="addcart({{$product->id}})">
+                                                            <i class="fa-solid fa-cart-plus"></i> Add to cart
+                                                        </span>
+                                                        
+                                                        <span wire:loading wire:target= "addcart({{$product->id}})">
+                                                            Adding to cart ... <i class="fa-solid fa-spinner fa-spin"></i>
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                            <?php
-                                if ($nbr_products++ === 3) break;
-                                }
-                            ?>
-                        </section>
+                                <?php
+                                    if ($nbr_products++ === 3) break;
+                                    }
+                                ?>
+                            </section>
+                        </div>
                     </div>
-                </div>
-            @endforeach
-        </section> 
-    </div>
+                @endforeach
+            </section> 
+        </div>
+    @endif
 
     <!-- Start Featured categories -->
     <div class="wrrapper-conrtainer">
@@ -227,47 +236,51 @@
                 <h2 class="featured-header-title">Featured Categories</h2>
                 <div class="featured-header-categories" id="featured-header-categories">
                     @foreach ($featuredcategories as $featuredcategory)
-                        <span class="featured-header-category" data-cat ='{{$featuredcategory->id}}'>
-                            {{$featuredcategory->category}}
-                        </span>
+                        @if (count($featuredcategory->SubCategory)>0)                        
+                            <span class="featured-header-category" data-cat ='feautured-{{$featuredcategory->id}}'>
+                                {{$featuredcategory->category}}
+                            </span>
+                        @endif
                     @endforeach
                 </div>
             </div>
-            @foreach ($featuredcategories as $featuredcategory)
-                <div class="featured-items" id="{{$featuredcategory->id}}">
-                    <section class="products">
-                        <?php
-                            $nbr_products = 0;
-                            foreach ($featuredcategory->products as $product) {?>
-                                <div class="product">
-                                    <span class="product-status">new</span>
-                                    <a href="{{route('details',[$product->slug])}}" class="product-image">
-                                        <img src="{{asset('images/products/'.$product->image)}}" alt="{{$product->name}}" />
-                                    </a>
-                                    <div class="product-info">
-                                        <a href="{{route('subcategory',[$product->SubCategory->Category->slug,$product->SubCategory->slug])}}" class="product-category">{{$product->SubCategory->subcategory}}</a>
-                                        <a href="{{route('details',[$product->slug])}}" class="product-name">{{$product->name}}</a>
-                                        <p class="product-price">{{$product->price}}$</p>
-                                        <div class="product-items flexing">
-                                            <div class="btn-action" wire:click="addcart({{$product->id}})">
-                                                <span wire:loading.remove wire:target="addcart({{$product->id}})">
-                                                    <i class="fa-solid fa-cart-plus"></i> Add to cart
-                                                </span>
-                                                
-                                                <span wire:loading wire:target= "addcart({{$product->id}})">
-                                                    Adding to cart ... <i class="fa-solid fa-spinner fa-spin"></i>
-                                                </span>
+                @foreach ($featuredcategories as $featuredcategory)
+                    @if (count($featuredcategory->SubCategory)>0) 
+                        <div class="featured-items" id="feautured-{{$featuredcategory->id}}">
+                            <section class="products">
+                                <?php
+                                    $nbr_products = 0;
+                                    foreach ($featuredcategory->products as $product) {?>
+                                        <div class="product">
+                                            <span class="product-status">new</span>
+                                            <a href="{{route('details',[$product->slug])}}" class="product-image">
+                                                <img src="{{asset('images/products/'.$product->image)}}" alt="{{$product->name}}" />
+                                            </a>
+                                            <div class="product-info">
+                                                <a href="{{route('subcategory',[$product->SubCategory->Category->slug,$product->SubCategory->slug])}}" class="product-category">{{$product->SubCategory->subcategory}}</a>
+                                                <a href="{{route('details',[$product->slug])}}" class="product-name">{{$product->name}}</a>
+                                                <p class="product-price">{{$product->price}}$</p>
+                                                <div class="product-items flexing">
+                                                    <div class="btn-action" wire:click="addcart({{$product->id}})">
+                                                        <span wire:loading.remove wire:target="addcart({{$product->id}})">
+                                                            <i class="fa-solid fa-cart-plus"></i> Add to cart
+                                                        </span>
+                                                        
+                                                        <span wire:loading wire:target= "addcart({{$product->id}})">
+                                                            Adding to cart ... <i class="fa-solid fa-spinner fa-spin"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                        <?php
-                                if ($nbr_products++ == 9) break;
-                            }
-                        ?>
-                    </section>
-                </div>
-            @endforeach
+                                <?php
+                                        if ($nbr_products++ == 9) break;
+                                    }
+                                ?>
+                            </section>
+                        </div>                       
+                    @endif
+                @endforeach
         </section>
     </div>
 

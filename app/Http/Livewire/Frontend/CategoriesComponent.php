@@ -8,7 +8,7 @@ class CategoriesComponent extends Component
 {
     public function render()
     {
-        $categories  =   Category::all();
+        $categories  = Category::all();
         return view('livewire.frontend.categories-component',compact("categories"));
     }
 }

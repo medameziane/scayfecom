@@ -117,18 +117,6 @@ if(closeCart || cart){
 }
 let product_overly = document.querySelector(".product-overly")
 
-/*--------- Start Shop page  ---------*/
-let shoppriceto = document.getElementById("shoppriceto")
-let shoppricefrom = document.getElementById("shoppricefrom")
-if(shoppriceto && shoppricefrom){
-  shoppriceto.onchange = ()=>{
-    document.querySelector(".price-to").innerHTML = shoppriceto.value + "$"
-  }
-  shoppricefrom.onchange = ()=>{
-    document.querySelector(".price-from").innerHTML = shoppricefrom.value + "$"
-  }
-}
-
 /*--------- Start Footer  ---------*/
 // Get Currant date
 let myDate = new Date()

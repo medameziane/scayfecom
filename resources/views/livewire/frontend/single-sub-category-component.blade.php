@@ -4,10 +4,10 @@
             <div class="main-details col-md-8">
                 <div class="shop-products">
                     <div class="shop-items flexing">
-                    <div class="shop-title">We found <span class="shop-count">{{count($singlesubcategory[0]->products)}}</span> Items</div>
+                        <h3 class="shop-title">We found <span class="shop-count">{{count($products)}}</span> Items</h3>
                     </div>
-                    <div class="products">
-                        @foreach ( $singlesubcategory[0]->products as $product)
+                    <div class="products" wire:loading.remove wire:target="handleFilter">
+                        @foreach ( $products as $product)
                             <div class="product">
                                 <span class="product-status">new</span>
                                 <a href="{{route('details',[$product->slug])}}" class="product-image">
@@ -32,25 +32,38 @@
                             </div>
                         @endforeach
                     </div>
+                    <div class="products" wire:loading wire:target="handleFilter">
+                        Please wait... <i class="fa-solid fa-spinner fa-spin"></i>
+                    </div>
                 </div>
             </div>
             <aside class="sidebar col-md-4">
                 <div class="sidebar-content">
                     <div class="sidebar-item">
-                    <div class="sidebar-title">Filter Search</div>
-                    <form action="#" class="form-filter">
-                        <h2 class="filter-title">Filter by price</h2>
-                        <div class="filter-input">
-                            <input type="range" class="filter-input-min" value="0" min="0" max="250" id="shoppricefrom">
-                            <input type="range" class="filter-input-min" value="0" min="0" max="250" id="shoppriceto">
+                        <h3 class="sidebar-title">Filter Search</h3>
+                        <div class="filter-search-content">
+                            <h2 class="filter-title">Filter by price</h2>
+                            <div class="filter-input">
+                                <input type="range" 
+                                class="filter-input-min"
+                                min="0"
+                                max="{{$this->maxprice}}" 
+                                wire:model="minprice" id="shoppricefrom">
+
+                                <input type="range" 
+                                class="filter-input-min"
+                                min="0"
+                                max="{{$maxproductsprice}}" 
+                                wire:model="maxprice" id="shoppriceto">
+                            </div>
+
+                            <div class="ranger-price">
+                                Price Between:  <span class="price-from">{{$this->minprice}}$</span>
+                                                <b> — </b>
+                                                <span class="price-to">{{$this->maxprice}}$</span>
+                            </div>
+                            <button wire:click="handleFilter()" class="btn-action my-3">Apply Filter</button>
                         </div>
-                        <div class="ranger-price">
-                            Price Between:  
-                            <span class="price-from">0$</span> <b> — </b>
-                            <span class="price-to">250$</span>
-                        </div>
-                        <input type="submit" value="Apply Filter " class="btn-action my-3">
-                    </form>
                     </div>
                 </div>
             </aside>

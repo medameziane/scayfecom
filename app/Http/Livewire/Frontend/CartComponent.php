@@ -18,17 +18,25 @@ class CartComponent extends Component
         $findid                     = Shopping::where('product_id',$product_id)->first();
         $getid                      = $findid->id;
         $updatequantity             = Shopping::find($getid);
-        $updatequantity->quantity   = $updatequantity->quantity + 1;
-        $updatequantity->subprice   = $updatequantity->quantity * $updatequantity->product->price;
-        $updatequantity->save();
-        $this->emit('cardupdated');
-        $this->emit('hiddencartupdated');
-        $this->emit("totalPrices");
-        $this->dispatchBrowserEvent('message', [
-            'text'  =>  "The quantity has been updated successfully",
-            'type'  =>  "success",
-            ]
-        );
+        if($findid->quantity == $findid->product->quantity){
+            $this->dispatchBrowserEvent('message', [
+                'text'  =>  "Sorry, the required quantity is not currently in stock",
+                'type'  =>  "warning",
+                ]
+            );
+        }else{
+            $updatequantity->quantity   = $updatequantity->quantity + 1;
+            $updatequantity->subprice   = $updatequantity->quantity * $updatequantity->product->price;
+            $updatequantity->save();
+            $this->emit('cardupdated');
+            $this->emit('hiddencartupdated');
+            $this->emit("totalPrices");
+            $this->dispatchBrowserEvent('message', [
+                'text'  =>  "The quantity has been updated successfully",
+                'type'  =>  "success",
+                ]
+            );
+        }
     }
 
     public function minus($product_id){
@@ -51,11 +59,11 @@ class CartComponent extends Component
                 'type'  =>  "success",
                 ]
             );
+            $updatequantity->save();
+            $this->emit('cardupdated');
+            $this->emit('hiddencartupdated');
+            $this->emit("totalPrices");
         }
-        $updatequantity->save();
-        $this->emit('cardupdated');
-        $this->emit('hiddencartupdated');
-        $this->emit("totalPrices");
     }
 
     public function delete($id){

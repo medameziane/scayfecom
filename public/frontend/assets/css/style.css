@@ -84,7 +84,6 @@ header .wrrapper {
   justify-content: flex-start;
   flex-wrap: wrap;
 }
-
 img{
   width: 100%;
   height: 100%;
@@ -205,7 +204,7 @@ img{
   transform: translateY(-50%);
   right: 1px;
   background: var(--bg-color);
-  padding: 12px 20px;
+  padding: 14px 20px;
   font-size: 16px;
   color: var(--main-color);
   cursor: pointer;
@@ -697,7 +696,6 @@ img{
 }
 .main-content .sidebar .sidebar-item .filter-title{
   font-size: 18px;
-  margin: 10px 0;
   color: var(--title-color);
   font-weight: 500;
 }
@@ -919,17 +917,83 @@ img{
 .filter-input #shoppriceto {
   position: absolute;
   right: 0;
-  width: 51%;
+  width: 50%;
 }
-.form-filter .filter-input .filter-input-min{
-  width: 100%;
+.sidebar-item .filter-search-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
 }
-.form-filter .ranger-price{
+.sidebar-item .ranger-price{
   font-size: 16px;
   font-weight: 500;
-  margin: 30px 0;
 }
-
+input[type=range] {
+  -webkit-appearance: none;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: var(--main-color);
+}
+input[type=range]::-webkit-slider-thumb {
+  height: 30px;
+  width: 10px;
+  border-radius: 5px;
+  background: var(--hover-color);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -11px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: var(--main-color);
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: var(--main-color);
+}
+input[type=range]::-moz-range-thumb {
+  height: 30px;
+  width: 15px;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: var(--main-color);
+  border-radius: 10px;
+}
+input[type=range]::-ms-fill-upper {
+  background: var(--main-color);
+  border-radius: 10px;
+}
+input[type=range]::-ms-thumb {
+  height: 30px;
+  width: 15px;
+  background: var(--hover-color);;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower{
+  background: var(--main-color);
+}
+input[type=range]:focus::-ms-fill-upper{
+  background: var(--main-color);
+}
 /* Start edit checkout page */
 .checkout-section {
   margin: 10px 0;

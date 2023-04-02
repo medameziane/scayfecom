@@ -7,30 +7,27 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Shopping;
 use Illuminate\Support\Facades\Auth;
-class HomeComponent extends Component
-{
-
+class HomeComponent extends Component{
     // Add to cart
     public function addcart($product_id){
-
-        if(Shopping::where('product_id',$product_id)->exists()){
-            $findid                         = Shopping::where('product_id',$product_id)->first();
-            $getid = $findid->id;
-            $updatequantity                 = Shopping::find($getid);
-            $updatequantity->quantity       = $updatequantity->quantity + 1;
-            $updatequantity->subprice       = $updatequantity->quantity * $updatequantity->product->price;
-            $updatequantity->save();
-            $this->emit('cardupdated');
-            $this->emit('hiddencartupdated');
-            $this->dispatchBrowserEvent('message', [
-                'text'  => "The product already added",
-                'type'  =>'warning',
-                ]
-            );
-            
-        }else{
-
-            if(Auth::user()){
+        if(Auth::user()){
+            if(Shopping::where('product_id',$product_id)->exists()){
+                $findid                         = Shopping::where('product_id',$product_id)->first();
+                $getid = $findid->id;
+                $updatequantity                 = Shopping::find($getid);
+                $updatequantity->quantity       = $updatequantity->quantity + 1;
+                $updatequantity->subprice       = $updatequantity->quantity * $updatequantity->product->price;
+                $updatequantity->save();
+                $this->emit('cardupdated');
+                $this->emit('hiddencartupdated');
+                $this->dispatchBrowserEvent('message', [
+                    'text'  => "The product already added",
+                    'type'  =>'warning',
+                    ]
+                );
+                
+            }else{
+    
                 $shop               = new Shopping();
                 $shop->product_id   = $product_id;
                 $shop->user_id      = Auth::user()->id;
@@ -45,11 +42,11 @@ class HomeComponent extends Component
                     'type'  =>  'success',
                     ]
                 );
-            }else{
-                return redirect()->Route("login");
             }
+            $this->skipRender();
+        }else{
+            return redirect()->Route("login");
         }
-        $this->skipRender();
     }
 
     // Add to wishlist
@@ -65,16 +62,16 @@ class HomeComponent extends Component
         $products           =   Product::inRandomOrder()->limit(20)->get();
         $categories         =   Category::all();
         $singleCategory     =   Category::inRandomOrder()->limit(1)->get();
-        $limitcategories    =   Category::inRandomOrder()->limit(6)->get();
         $productslatestWeek =   Product::inRandomOrder()->limit(2)->get();
         $featuredcategories =   Category::inRandomOrder()->limit(6)->get();
+        $popularcategories  =   Category::inRandomOrder()->limit(6)->get();
         $bestsellerproducts =   Product::inRandomOrder()->limit(4)->get();
         $hotproducts        =   Product::inRandomOrder()->limit(4)->get();
         $foryouproducts     =   Product::inRandomOrder()->limit(4)->get();
         $popularproducts    =   Product::inRandomOrder()->limit(4)->get();
         $data = compact(
             "products",
-            "limitcategories",
+            "popularcategories",
             "categories",
             "singleCategory",
             "productslatestWeek",
