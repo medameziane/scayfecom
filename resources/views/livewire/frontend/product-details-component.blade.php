@@ -61,7 +61,7 @@
                                     </span>
                                 </div>
 
-                                <div class="btn-action bg-success w-50 py-2" wire:click="addcart({{$product->id}})">
+                                {{-- <div class="btn-action bg-success w-50 py-2" wire:click="addcart({{$product->id}})">
                                     <span wire:loading.remove wire:target="addcart({{$product->id}})">
                                         <i class="fa-solid fa-cart-plus"></i> 
                                         Buy Now
@@ -70,7 +70,7 @@
                                     <span wire:loading wire:target= "addcart({{$product->id}})">
                                         Adding to cart ... <i class="fa-solid fa-spinner fa-spin"></i>
                                     </span>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

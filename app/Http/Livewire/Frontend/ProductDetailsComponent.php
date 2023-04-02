@@ -49,25 +49,23 @@ class ProductDetailsComponent extends Component
 
     // Add to cart
     public function addcart($product_id){
-
-        if(Shopping::where('product_id',$product_id)->exists()){
-            $findid                         = Shopping::where('product_id',$product_id)->first();
-            $getid = $findid->id;
-            $updatequantity                 = Shopping::find($getid);
-            $updatequantity->quantity       = $this->quantity;
-            $updatequantity->subprice       = $updatequantity->quantity * $updatequantity->product->price;
-            $updatequantity->save();
-            $this->emit('cardupdated');
-            $this->emit('hiddencartupdated');
-            $this->dispatchBrowserEvent('message', [
-                'text'  => "The product already added",
-                'type'  =>'warning',
-                ]
-            );
-            
-        }else{
-
-            if(Auth::user()){
+        if(Auth::user()){
+            if(Shopping::where('product_id',$product_id)->exists()){
+                $findid                         = Shopping::where('product_id',$product_id)->first();
+                $getid = $findid->id;
+                $updatequantity                 = Shopping::find($getid);
+                $updatequantity->quantity       = $this->quantity;
+                $updatequantity->subprice       = $updatequantity->quantity * $updatequantity->product->price;
+                $updatequantity->save();
+                $this->emit('cardupdated');
+                $this->emit('hiddencartupdated');
+                $this->dispatchBrowserEvent('message', [
+                    'text'  => "The product already added",
+                    'type'  =>'warning',
+                    ]
+                );
+                
+            }else{
                 $shop               = new Shopping();
                 $shop->product_id   = $product_id;
                 $shop->user_id      = Auth::user()->id;
@@ -82,9 +80,9 @@ class ProductDetailsComponent extends Component
                     'type'  =>  'success',
                     ]
                 );
-            }else{
-                return redirect()->Route("login");
             }
+        }else{
+            return redirect()->Route("login");
         }
         $this->skipRender();
     }
