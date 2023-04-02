@@ -9,7 +9,7 @@
                 @endif
                 <thead class="table-dark">
                     <tr>
-                    <td>Product</td>
+                    <td colspan='3'>Product</td>
                     <td>Quantity</td>
                     <td>Status</td>
                     <td>Actions</td>
@@ -18,7 +18,7 @@
                 <tbody class="table-body">
                     @foreach ($products as $product)
                     <tr class="align-middle">
-                        <td>
+                        <td colspan='3'>
                             <a href="{{route('products.show',['product_id'=>$product->id])}}" class="body-child-content">
                                 <img src="{{asset('images/products/'.$product->image)}}" alt="{{$product->name}}">
                                 {{$product->name}}

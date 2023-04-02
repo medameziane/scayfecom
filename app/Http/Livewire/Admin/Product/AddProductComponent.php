@@ -18,7 +18,6 @@ class AddProductComponent extends Component{
     public $quantity;
     public $image;
     public $sub_category_id;
-
     public $category_id;
     public $subcategories = [];
 
@@ -33,7 +32,7 @@ class AddProductComponent extends Component{
             "description"       =>  ['required','min:10'],
             "price"             =>  "required | integer ",
             "quantity"          =>  "required | integer ",
-            "image"             =>  "image",
+            "image"             =>  "image | required",
             "sub_category_id"   =>  "required",
         ]);
 
@@ -65,7 +64,6 @@ class AddProductComponent extends Component{
         $subcategories  = ["subcategories" => $this->subcategories];
         $data = compact("categories","subcategories");
         
-        return view('livewire.admin.product.add-product-component',$data)
-                ->layout("layouts.staticadmin");;
+        return view('livewire.admin.product.add-product-component',$data)->layout("layouts.staticadmin");
     }
 }

@@ -12,9 +12,17 @@ document.querySelector(".toggle-sidebar").onclick=()=>{
   document.querySelector('.container-wrapper').classList.toggle('full')
   document.querySelector('.header').classList.toggle('full')
 }
+
 document.querySelector(".header-user").onclick=()=>{
   document.querySelector('.user-drop-down').classList.toggle('active')
 }
+document.addEventListener('click', (e)=>{
+  let get = document.querySelector(".header-user");
+  if (!get.contains(e.target)) {
+    document.querySelector('.user-drop-down').classList.remove('active')
+  }
+});
+
 document.querySelector(".settings-icon").onclick=()=>{
   document.querySelector(".settings-area").classList.add("show")
   document.querySelector(".overly").style.display = "block"
@@ -23,6 +31,7 @@ document.querySelector(".close-settings").onclick=()=>{
   document.querySelector(".settings-area").classList.remove("show")
   document.querySelector(".overly").style.display = "none"
 }
+
 let handleLight = ()=>{
   document.querySelector(".dot-dark").classList.remove("active")
   document.querySelector(".dot-light").classList.add("active")
@@ -39,20 +48,6 @@ let handleTheme = (theme)=>{
     document.body.classList.remove("is-dark")
     localStorage.clear();
   }
-}
-
-// Preview image form
-let myImage = document.getElementById('image')
-let beforeImage = document.getElementById('preview-image-before-upload')
-if(myImage || beforeImage){
-  myImage.addEventListener("change",function(){  
-    let reader = new FileReader();
-    reader.addEventListener("load",(e)=>{ 
-      beforeImage.setAttribute('src', e.target.result);}
-    )
-    reader.readAsDataURL(this.files[0]); 
-   }
-  )
 }
 
 // handle event messages

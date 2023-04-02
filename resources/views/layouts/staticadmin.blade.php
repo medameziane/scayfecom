@@ -65,7 +65,7 @@
         <div class="header-items">
           <div class="header-user">
             <div class="user-logo"><img src="https://coderthemes.com/hyper/saas/assets/images/users/avatar-1.jpg" /></div>
-            {{-- <div class="user-info">{{ Auth::user()->name }}</div> --}}
+            <div class="user-info">{{ Auth::user()->name }}</div>
             <div class="user-drop-down">
               <ul class="user-items">
                 <li class="user-item">Profile</li>

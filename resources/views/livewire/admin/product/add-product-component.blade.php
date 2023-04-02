@@ -72,7 +72,7 @@
                   <div class="input-box">
                     <label class="details">Select Categoty</label>
                     <select name="category_id" wire:model="category_id" class="select_category">
-                      <option value="" selected>Categories</option>
+                      <option selected>Categories</option>
                         @foreach($categories as $category)
                           <option value="{{$category->id}}">{{$category->category}}</option>
                         @endforeach
@@ -81,15 +81,17 @@
                   </div>
 
                   {{-- Product SubCategory --}}
-                  <div class="input-box" id="sub_category">
-                    <label class="details">Select Sub Categoty</label>
+                  <div wire:loading.remove wire:target="category_id" class="input-box" id="sub_category">
+                    <label class="details">Select SubCategoty</label>
                     <select name="sub_category_id" wire:model ="sub_category_id">
-                      <option value="" selected>Sub Categories</option>
                         @foreach($subcategories as $subcategory)
                           <option value="{{$subcategory->id}}">{{$subcategory->subcategory}}</option>
                         @endforeach
                     </select>
                     @error('sub_category_id')<p class="input-error">{{$message}}</p>@enderror
+                  </div>
+                  <div wire:loading wire:target="category_id" class="input-box" id="sub_category">
+                    Please wait ... <i class="fa-solid fa-spinner fa-spin"></i>
                   </div>
 
                 </div>
@@ -100,11 +102,20 @@
                     <input type="file" name="image" class="hidden-input-file" id="image" wire:model ="image"/>
                     <label for="image" class="details">
                       <i class="fa-solid fa-cloud-arrow-up icon-input-image"></i>
-                      <p class="text-input-image">Upload product photo</p>
+                      <p class="text-input-image">Click here to upload product photo</p>
                     </label>
                   </div>
                   <div class="preview-image input-image">
-                    <img id="preview-image-before-upload" src="{{asset('admin/assets/images/no-preview.jpg')}}" style="max-height: 250px;">
+                    <span wire:loading.remove wire:target="image" wire:key="image">
+                      @if ($image)
+                        <img src="{{ $image->temporaryUrl() }}" width="100" style="max-height: 250px;" class="mt-2">
+                      @else
+                        <img id="preview-image-before-upload" src="{{asset('admin/assets/images/no-preview.jpg')}}" style="max-height: 250px;">
+                      @endif
+                    </span>
+                    <span wire:loading wire:target="image" wire:key="image">
+                      Uploading...
+                    </span>
                   </div>
                 </div>
                 @error('image')<p class="input-error">{{$message}}</p>@enderror   
@@ -113,7 +124,6 @@
 
               <div class="form-actions">
                 <input type="submit" class="btn-action" value="Add Product" />
-                <input type="reset" class="btn btn-danger" value="Cancel" />
               </div>
             </form>
           </div>

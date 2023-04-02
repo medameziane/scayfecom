@@ -17,6 +17,7 @@ class EditProductComponent extends Component
     public $description;
     public $price;
     public $quantity;
+    public $image;
     public $sub_category_id;
 
     public function generateSlug(){
@@ -30,18 +31,23 @@ class EditProductComponent extends Component
         $this->description          = $product->description;
         $this->price                = $product->price;
         $this->quantity             = $product->quantity;
+        $this->image                = $product->image;
         $this->sub_category_id      = $product->sub_category_id;
     }
     public function updateProduct(){
         $this->validate([
-            "name"              =>  "required",
+            "name"              =>  "required | max:70",
             "slug"              =>  "required",
-            "description"       =>  "required",
-            "price"             =>  "required",
-            "quantity"          =>  "required",
+            "description"       =>  ['required','min:10'],
+            "price"             =>  "required | integer ",
+            "quantity"          =>  "required | integer ",
+            "image"             =>  "image | required",
             "sub_category_id"   =>  "required",
         ]);
-        
+
+        // Change image name
+        $imageName  =  time().'.'.$this->image->extension();
+
         // Edit data
         $product                        =  Product::find($this->product_id);
         $product->name                  =  $this->name;
@@ -49,8 +55,12 @@ class EditProductComponent extends Component
         $product->description           =  $this->description;
         $product->price                 =  $this->price;
         $product->quantity              =  $this->quantity;
+        $product->image                 =  $imageName;
         $product->sub_category_id       =  $this->sub_category_id;
         $product->save();
+
+        // Move image to target location (product)
+        $this->image->storeAs("products",$imageName);
         return redirect()->route('products')->with("success",'Your product has been updated successfully');
     }
 
