@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div class="latest-section">
+    {{-- <div class="latest-section">
         <div class="latest-users">
         <div class="box-content">
             <div class="box-header"><h3>Latest 5 Users</h3><span><a href="/users">View more</a></span></div>
@@ -107,5 +107,5 @@
             </ul>
         </div>
         </div>
-    </div>
+    </div> --}}
 </div>

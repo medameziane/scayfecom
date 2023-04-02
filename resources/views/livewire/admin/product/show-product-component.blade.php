@@ -8,7 +8,7 @@
     <div class="box-body">
         <div class="details-section">
             <div class="details-left">
-                <img src="{{asset('images/product/'.$product->image)}}" alt="">
+                <img src="{{asset('images/products/'.$product->image)}}" alt="">
             </div>
             <div class="details-right">
                 <div class="more-details">
@@ -21,7 +21,7 @@
                         <span class="item-title">Quantity</span>
                         <div class="item-data item-numeric">{{$product->quantity}} <span class="text-success">in stock</span></div>
                         <span class="item-title">Category</span>
-                        <span class="item-data">{{$product->subcategory->sub_category}}</span>
+                        <span class="item-data">{{$product->SubCategory->category->category}} -> {{$product->SubCategory->subcategory}}</span>
                     </div>
                 </div>
             </div>

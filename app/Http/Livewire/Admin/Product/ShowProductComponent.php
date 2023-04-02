@@ -15,6 +15,6 @@ class ShowProductComponent extends Component
     
     public function render()
     {
-        return view('livewire.admin.product.show-product-component',["product"=>$this->product]);
+        return view('livewire.admin.product.show-product-component',["product"=>$this->product])->layout("layouts.staticadmin");
     }
 }

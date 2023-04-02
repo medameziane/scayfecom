@@ -28,6 +28,16 @@
               <i class="fa-solid fa-chevron-right arrow"></i>
             </a>
             <ul class="drop-menu">
+              <li class="drop-link"><a href="{{route('products.add')}}">Orders</a></li>
+              <li class="drop-link"><a href="{{route('categories')}}">In the cart</a></li>
+            </ul>
+          </li>
+          <li class="nav-link drop-down">
+            <a href="#">
+              <span class="link-name"><i class="fa-solid fa-wrench"></i>Management</span>
+              <i class="fa-solid fa-chevron-right arrow"></i>
+            </a>
+            <ul class="drop-menu">
               <li class="drop-link"><a href="{{route('products')}}">List Products</a></li>
               <li class="drop-link"><a href="{{route('products.add')}}">Add Product</a></li>
               <li class="drop-link"><a href="{{route('categories')}}">Categories</a></li>

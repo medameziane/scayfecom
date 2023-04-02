@@ -156,8 +156,8 @@ ul{
   position: absolute;
   top: 60px;
   background: var(--card-color);
-  width: 100%;
-  left: 0;
+  min-width: max-content;
+  right: 0;
   border: 1px solid var(--border-color);
   display: none;
 }
@@ -171,7 +171,7 @@ ul{
   border-top: 1px solid rgb(55 64 74 / 19%);
 }
 .header-items .header-user .user-drop-down .user-items .user-item {
-  background: var(--bg-color);
+  border-top: 1px solid var(--border-color);
   padding: 10px;
 }
 .header-items .header-langs .langs{
@@ -380,7 +380,7 @@ ul{
   overflow: hidden auto;
   margin-left: 0px;
   z-index: 99999;
-  transition: var(--transition-time);
+  transition: margin-left var(--transition-time);
 }
 .sidebar.show{
   margin-left: -250px;
@@ -921,11 +921,11 @@ tbody.table-body .body-child{
 tbody.table-body .body-child-content{
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
 }
 tbody.table-body .body-child-content img{
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
 }
 
 /* Custom style bootstrap */
@@ -943,7 +943,7 @@ tbody.table-body .body-child-content img{
 @media (max-width:767px) {
   :root{
     --content-width : 100%;
-    /* --sidebar-width : 0px; */
+    float:left;
   }
   .sidebar,.sidebar .logo-area{
     top : 60px;

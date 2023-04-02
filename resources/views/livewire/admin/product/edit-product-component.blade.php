@@ -14,14 +14,9 @@
               @csrf
               <div class="form-details">
                 <div class="input-box">
-                  <label for="title" class="details">Title</label>
-                  <input type="text" id="title" name="title" wire:model ="title" wire:keyup="generateSlug"/>
-                  @error('title')<p class="input-error">The title is required</p>@enderror
-                </div>
-                <div class="input-box">
-                  <label for="slug" class="details">Slug</label>
-                  <input type="text" id="slug" name="slug" wire:model ="slug" readonly/>
-                  @error('slug')<p class="input-error">The slug is required</p>@enderror
+                  <label for="name" class="details">Product Name</label>
+                  <input type="text" id="name" name="name" wire:model ="name" wire:keyup="generateSlug"/>
+                  @error('name')<p class="input-error">The name is required</p>@enderror
                 </div>
                 <div class="input-box">
                   <label for="description" class="details">Description</label>
@@ -41,10 +36,10 @@
                   </div>
                   <div class="input-box">
                     <label class="details">Select Categoty</label>
-                    <select name="subcategory_id" wire:model ="subcategory_id">
-                      <option value="" selected>Categories</option>
+                    <select name="sub_category_id" wire:model ="sub_category_id">
                         @foreach($subcategories as $subcategory)
-                          <option value="{{$subcategory->id}}">{{$subcategory->sub_category}}</option>
+                          <option value="{{$subcategory->id}}" @if ($subcategory->id === $this->sub_category_id)selected
+                          @endif>{{$subcategory->subcategory}}</option>
                         @endforeach
                     </select>
                     @error('subcategory_id')<p class="input-error">The categoty is required</p>@enderror
